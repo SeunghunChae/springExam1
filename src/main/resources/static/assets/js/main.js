@@ -70,7 +70,7 @@ window.onload = function(){
             clicked=event.target.getAttribute('value');
             var len=event.target.className.length;
             var temp=event.target.className; //class 명 원상 복귀용
-            event.target.className+=" animated shake";
+            event.target.className+=" animated tada";
             setTimeout(function(e){
                 event.target.className=temp; //class 명 원상 복귀
                 var hide=document.getElementById("firstTab");
