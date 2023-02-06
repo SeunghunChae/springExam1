@@ -1,6 +1,12 @@
 var clicked='';
 var MouseTemp = '';
 
+//주가 난수 생성 코드
+/*
+var temp=전일 값;
+temp=temp+temp*(Math.random()-0.5)/15;
+*/
+
 
 //실시간 글씨 변경 사용법
 var count=0;
