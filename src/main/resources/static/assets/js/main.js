@@ -1,6 +1,7 @@
 var clicked='';
 var MouseTemp = '';
 
+
 //주가 난수 생성 코드
 /*
 var temp=전일 값;
@@ -48,6 +49,7 @@ window.onload = function(){
     //var clicked='';
 
     var target=document.getElementById("cardList");
+    var target2=document.getElementById("cardList2");
     //target.childNodes[1].childNodes[1].childNodes[1].textContent;
 
         
@@ -67,6 +69,9 @@ window.onload = function(){
             //console.log(MouseTemp);
        });
    }
+
+
+
 
 
 
