@@ -49,23 +49,21 @@ window.onload = function(){
     //var clicked='';
 
     var target=document.getElementById("cardList");
-    var target2=document.getElementById("cardList2");
-    //target.childNodes[1].childNodes[1].childNodes[1].textContent;
 
         
     //마우스 오버 시각화
     for(var i =0;i<(target.childNodes.length-1)/2;i++){
          target.childNodes[i*2+1].addEventListener("mouseenter",function(event){
-            MouseTemp = event.target.className;
+            MouseTemp = event.target.childNodes[1].className;
             event.target.childNodes[1].style.backgroundColor = '#00000050';
-            event.target.className+=" animated pulse";
+            event.target.childNodes[1].className+=" animated pulse";
             //console.log(MouseTemp);
         });
     }
     for(var i =0;i<(target.childNodes.length-1)/2;i++){
             target.childNodes[i*2+1].addEventListener("mouseleave",function(event){
             event.target.childNodes[1].style.backgroundColor = 'transparent';
-            event.target.className=MouseTemp;
+            event.target.childNodes[1].className=MouseTemp;
             //console.log(MouseTemp);
        });
    }
