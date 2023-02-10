@@ -1,6 +1,10 @@
 var clicked='';
 var MouseTemp = '';
 
+//차트데이터
+var lable=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+var value=[7, 5, 14, 7, 12, 6, 10, 6, 11, 5];
+
 
 //실시간 글씨 변경 사용법
 var count=0;
@@ -12,6 +16,7 @@ setInterval(function(){
     count++;
 }, 1000);
 
+/*
 setInterval(function(){
     var temp=document.getElementById("battery");
     temp.textContent=arr[count%4];
@@ -23,6 +28,7 @@ setInterval(function(){
     temp.textContent=arr[count%4];
     count++;
 }, 500);
+*/
 
 function wait(sec) {
 
@@ -35,8 +41,81 @@ function wait(sec) {
     }
 
 }
+
+function changeChart(){
+    var ctx = document.getElementById('chart1').getContext('2d');
+
+    lable.push('new');
+    var last=lable.length-1;
+    var pushVal=value[last]+value[last]*(Math.random()-0.5)/15;
+    value.push(pushVal);
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+            datasets: [{
+                label: 'New Visitor',
+                data: lable, //[3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
+                backgroundColor: '#fff',
+                borderColor: "transparent",
+                pointRadius :"0",
+                borderWidth: 3
+            }, {
+                label: 'Old Visitor',
+                data: value, //[7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
+                backgroundColor: "rgba(255, 255, 255, 0.25)",
+                borderColor: "transparent",
+                pointRadius :"0",
+                borderWidth: 1
+            }]
+        },
+    options: {
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+          labels: {
+            fontColor: '#ddd',
+            boxWidth:40
+          }
+        },
+        tooltips: {
+          displayColors:false
+        },
+      scales: {
+          xAxes: [{
+            ticks: {
+                beginAtZero:true,
+                fontColor: '#ddd'
+            },
+            gridLines: {
+              display: true ,
+              color: "rgba(221, 221, 221, 0.08)"
+            },
+          }],
+           yAxes: [{
+            ticks: {
+                beginAtZero:true,
+                fontColor: '#ddd'
+            },
+            gridLines: {
+              display: true ,
+              color: "rgba(221, 221, 221, 0.08)"
+            },
+          }]
+         }
+
+     }
+    });
+}
+
+
 window.onload = function(){
  	console.log(location.href);
+
+    //버튼 이벤트 추가
+    var btnPredict=document.querySelector("#btnPredict");
+    btnPredict.addEventListener("click",changeChart());
 
     //클릭 이벤트
     //var clicked='';
