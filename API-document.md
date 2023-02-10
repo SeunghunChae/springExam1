@@ -16,7 +16,9 @@
 {
     "resCode": 200,
     "resMsg": "성공",
-    "userName" : "채승훈
+    "userName": "채승훈",
+    "userPk": 1,
+    "userId": "shchae822@naver.com"
 }
 ```
 ---
@@ -74,7 +76,48 @@
 <br>
 <br>
 
-### 4. 테마별 상위 4개 종목 - 특정 테마 불러오기
+### 4. 테마별 주식 목록 조회
+> GET<br>
+> localhost:8080/api/stock/{themePk}
+
+- **Request**
+```
+{ === 없음 === }
+```
+- **Response**
+```
+{
+    "stockList": [
+        {
+            "stockName": "현대차",
+            "stockPk": 1,
+            "stockUpAndDown": -0.9,
+            "stockPrice": 164500,
+            "stockCode": "005380"
+        },
+        {
+            "stockName": "기아차",
+            "stockPk": 2,
+            "stockUpAndDown": 1.2,
+            "stockPrice": 25000,
+            "stockCode": "000001"
+        },
+        {
+            "stockName": "승훈차",
+            "stockPk": 3,
+            "stockUpAndDown": 2.4,
+            "stockPrice": 25000,
+            "stockCode": "000001"
+        }
+    ],
+    "resCode": 200,
+    "resMsg": "성공"
+}
+```
+
+
+
+### 5. 테마별 상위 4개 종목 - 특정 테마 불러오기
 > GET<br>
 > localhost:8080/api/theme/top4/{themePk}
 
@@ -111,7 +154,7 @@
 <br>
 <br>
 
-### 4. 테마별 상위 4개 종목 - 전체 테마 불러오기
+### 6. 테마별 상위 4개 종목 - 전체 테마 불러오기
 > GET<br>
 > localhost:8080/api/theme/top4/all
 

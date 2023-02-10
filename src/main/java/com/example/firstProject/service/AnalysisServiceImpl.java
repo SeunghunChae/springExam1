@@ -38,6 +38,12 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     @Override
+    public List<HashMap<String, Object>> getStockList(int themePk) throws Exception {
+        List<HashMap<String,Object>> result = analysisMapper.getStockList(themePk);
+        return ObjectUtils.keyToCamelCase(result);
+    }
+
+    @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public List<HashMap<String, Object>> getThemeTop4List(int themePk) throws Exception {
         List<HashMap<String,Object>> result = analysisMapper.getThemeTop4List(themePk);

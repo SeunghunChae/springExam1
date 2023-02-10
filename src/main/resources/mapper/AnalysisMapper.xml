@@ -8,6 +8,12 @@
         FROM THEME
     </select>
 
+    <select id="getStockList" resultType="HashMap">
+        SELECT STOCK_PK, STOCK_NAME, STOCK_CODE, STOCK_PRICE, STOCK_UP_AND_DOWN
+        FROM STOCK
+        WHERE THEME_PK = #{themePk}
+    </select>
+
     <select id="getThemeTop4List" parameterType="int" resultType="HashMap">
         SELECT STOCK_PK, STOCK_NAME, STOCK_CODE, STOCK_PRICE, STOCK_UP_AND_DOWN
         FROM STOCK

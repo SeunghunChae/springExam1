@@ -46,6 +46,20 @@ public class AnalysisController {
         return res;
     }
 
+    /** 테마 별 주식 목록 조회  **/
+    @GetMapping(value = "/stock/{themePk}", produces="application/json; charset=utf-8")
+    @ResponseBody
+    public HashMap<String,Object> getStockList(@PathVariable String themePk, HttpServletRequest request, HttpSession session) throws Exception{
+
+        if(!ObjectUtils.isNumber(themePk, true)) return ReturnCode.E_400.getHashMap();
+
+        List<HashMap<String,Object>> stockList = analysisService.getStockList(Integer.parseInt(themePk));
+        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
+        res.put("stockList", stockList);
+        return res;
+    }
+
+
     /**
      * 테마 별 수익률 상위 4개
      **/

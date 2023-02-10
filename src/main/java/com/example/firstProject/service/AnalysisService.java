@@ -17,6 +17,9 @@ public interface AnalysisService {
     /** 테마 목록 조회 **/
     List<HashMap<String, Object>> getThemeList() throws Exception;
 
+    /** 테마별 주식 목록 조회 **/
+    List<HashMap<String, Object>> getStockList(int themePk) throws Exception;
+
     /** 테마 별 수익률 상위 4개 **/
     List<HashMap<String, Object>> getThemeTop4List(int themePk) throws Exception;
 
