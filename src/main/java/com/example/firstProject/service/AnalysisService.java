@@ -17,12 +17,13 @@ public interface AnalysisService {
     /** 테마 목록 조회 **/
     List<HashMap<String, Object>> getThemeList() throws Exception;
 
-    /** 테마 별 수익률 상위 4개 **/
+    /** 테마별 주식 목록 조회 **/
+    List<HashMap<String, Object>> getStockList(int themePk) throws Exception;
+
+    /** 테마 별 수익률 상위 4개 - 특정 테마 **/
     List<HashMap<String, Object>> getThemeTop4List(int themePk) throws Exception;
 
-    /** 테마 별 투자 상세 내역 **/
-    List<HashMap<String, Object>> getThemeBuyDetail(int parseInt, int userPk) throws Exception;
+    /** 테마 별 수익률 상위 4개 - 전체 테마 **/
+    List<HashMap<String, Object>> getThemeTop4ListAll() throws Exception;
 
-    /** 테마 별 주가 예측 **//*
-    List<HashMap<String, Object>> getThemeForecast(int parseInt) throws Exception;*/
 }

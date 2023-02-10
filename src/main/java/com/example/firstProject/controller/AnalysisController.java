@@ -46,12 +46,26 @@ public class AnalysisController {
         return res;
     }
 
+    /** 테마 별 주식 목록 조회  **/
+    @GetMapping(value = "/stock/{themePk}", produces="application/json; charset=utf-8")
+    @ResponseBody
+    public HashMap<String,Object> getStockList(@PathVariable String themePk, HttpServletRequest request, HttpSession session) throws Exception{
+
+        if(!ObjectUtils.isNumber(themePk, true)) return ReturnCode.E_400.getHashMap();
+
+        List<HashMap<String,Object>> stockList = analysisService.getStockList(Integer.parseInt(themePk));
+        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
+        res.put("stockList", stockList);
+        return res;
+    }
+
+
     /**
-     * 테마 별 수익률 상위 4개
+     * 테마 별 수익률 상위 4개 - 특정 테마
      **/
     @GetMapping(value = "/theme/top4/{themePk}", produces="application/json; charset=utf-8")
     @ResponseBody
-    public HashMap<String,Object> getThemeTop4(@PathVariable String themePk, HttpServletRequest request, HttpSession session) throws Exception{
+    public HashMap<String,Object> getThemeTop4Each(@PathVariable String themePk, HttpServletRequest request, HttpSession session) throws Exception{
 
         if(!ObjectUtils.isNumber(themePk, true)) return ReturnCode.E_400.getHashMap();
 
@@ -62,37 +76,17 @@ public class AnalysisController {
     }
 
     /**
-     * 테마 별 투자 상세 내역
+     * 테마 별 수익률 상위 4개 - 전체 테마
      **/
-    @GetMapping(value = "/theme/buyDetail/{themePk}", produces="application/json; charset=utf-8")
+    @GetMapping(value = "/theme/top4/all", produces="application/json; charset=utf-8")
     @ResponseBody
-    public HashMap<String,Object> getThemeBuyDetail(@PathVariable String themePk, HttpServletRequest request, HttpSession session) throws Exception{
+    public HashMap<String,Object> getThemeTop4All(HttpServletRequest request, HttpSession session) throws Exception{
 
-        if(!ObjectUtils.isNumber(themePk, true)) return ReturnCode.E_400.getHashMap();
-        if(ObjectUtils.isNull(session.getAttribute("loginUserPk"))) return ReturnCode.E_401.getHashMap();
-
-        int loginUserPk = Integer.parseInt(session.getAttribute("loginUserPk").toString());
-        List<HashMap<String,Object>> buyDetailList = analysisService.getThemeBuyDetail(Integer.parseInt(themePk), loginUserPk);
+        List<HashMap<String,Object>> themeList = analysisService.getThemeTop4ListAll();
         HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
-        res.put("buyDetailList", buyDetailList);
+        res.put("themeList", themeList);
         return res;
     }
-
-    /**
-     * 테마 별 주가 예측
-     **/
-    /*@GetMapping(value = "/theme/forecast/{themePk}", produces="application/json; charset=utf-8")
-    @ResponseBody
-    public HashMap<String,Object> getThemeForecast(@PathVariable String themePk, HttpServletRequest request, HttpSession session) throws Exception{
-
-        if(!ObjectUtils.isNumber(themePk, true)) return ReturnCode.E_400.getHashMap();
-
-        List<HashMap<String,Object>> forecastList = analysisService.getThemeForecast(Integer.parseInt(themePk));
-        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
-        res.put("forecastList", forecastList);
-        return res;
-    }*/
-
 
 
 

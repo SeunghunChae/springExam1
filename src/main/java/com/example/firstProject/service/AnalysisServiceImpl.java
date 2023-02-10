@@ -38,6 +38,12 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     @Override
+    public List<HashMap<String, Object>> getStockList(int themePk) throws Exception {
+        List<HashMap<String,Object>> result = analysisMapper.getStockList(themePk);
+        return ObjectUtils.keyToCamelCase(result);
+    }
+
+    @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public List<HashMap<String, Object>> getThemeTop4List(int themePk) throws Exception {
         List<HashMap<String,Object>> result = analysisMapper.getThemeTop4List(themePk);
@@ -46,15 +52,18 @@ public class AnalysisServiceImpl implements AnalysisService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public List<HashMap<String, Object>> getThemeBuyDetail(int themePk, int loginUserPk) throws Exception {
-        List<HashMap<String,Object>> result = analysisMapper.getThemeBuyDetail(themePk, loginUserPk);
-        return ObjectUtils.keyToCamelCase(result);
-    }
+    public List<HashMap<String, Object>> getThemeTop4ListAll() throws Exception {
 
-    /*@Override
-    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public List<HashMap<String, Object>> getThemeForecast(int themePk) throws Exception {
-        List<HashMap<String,Object>> result = analysisMapper.getThemeForecast(themePk);
-        return ObjectUtils.keyToCamelCase(result);
-    }*/
+        // 전체 테마 리스트
+        List<HashMap<String,Object>> themeListOriginal = analysisMapper.getThemeList();
+        List<HashMap<String,Object>> themeList = ObjectUtils.keyToCamelCase(themeListOriginal);
+
+        // 테마 pk 별로 top4 리스트 조회 후, map 에 추가
+        for (HashMap<String, Object> theme : themeList) {
+            int themePk = Integer.parseInt(theme.get("themePk").toString());
+            List<HashMap<String,Object>> top4List = analysisMapper.getThemeTop4List(themePk);
+            theme.put("top4List",ObjectUtils.keyToCamelCase(top4List));
+        }
+        return themeList;
+    }
 }
