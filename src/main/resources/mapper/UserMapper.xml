@@ -4,10 +4,10 @@
 <mapper namespace="com.example.firstProject.mapper.UserMapper">
 
     <select id="login" resultType="HashMap" parameterType="com.example.firstProject.dto.LoginData">
-        SELECT USER_PK, USER_ID, USER_NAME
+        SELECT USER_PK, USER_ID, USER_NAME, USER_PW
         FROM  `USER`
         WHERE USER_ID = #{userId}
-          AND USER_PW = #{userPw}
+        AND USER_PW = #{userPw}
     </select>
 
 
