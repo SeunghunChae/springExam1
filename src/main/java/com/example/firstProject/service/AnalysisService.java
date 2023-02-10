@@ -28,4 +28,7 @@ public interface AnalysisService {
 
     /** 최근 10일 주가 조회 **/
     List<HashMap<String, Object>> getStock10Days(int stockPk) throws Exception;
+
+    /** 크롤링 데이터 전체 조회 **/
+    List<HashMap<String, Object>> getCrawling() throws Exception;
 }

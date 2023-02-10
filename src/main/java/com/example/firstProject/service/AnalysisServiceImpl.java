@@ -73,4 +73,11 @@ public class AnalysisServiceImpl implements AnalysisService {
         List<HashMap<String,Object>> result = analysisMapper.getStock10Days(stockPk);
         return ObjectUtils.keyToCamelCase(result);
     }
+
+    /** 크롤링 데이터 전체 조회 **/
+    @Override
+    public List<HashMap<String, Object>> getCrawling() throws Exception {
+        List<HashMap<String,Object>> result = analysisMapper.getCrawling();
+        return ObjectUtils.keyToCamelCase(result);
+    }
 }
