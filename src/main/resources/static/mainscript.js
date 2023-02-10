@@ -43,6 +43,7 @@ function funcSubmit() {
             } else {
                 // application.yml에 thymeleaf 클래스path: static/.html로 설정
                 location.replace("/main"); // main 화면으로 이동
+                //location.href("http://localhost:8080/main"); // main 화면으로 이동
             }
         },
         error: function(request, status, error) {
