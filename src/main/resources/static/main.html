@@ -136,7 +136,7 @@
                             <div class="card-body " value="차" style="opacity : 1; background-color : transparent;">
                                 <h5 class="text-white mb-0"
                                     style = "color : white;"
-                                    id="temp"
+                                    id="car"
                                     value="차">시작 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;" value="차">
                                     <div class="progress-bar" style="width:55%" value="차"></div>
@@ -146,7 +146,7 @@
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3 border-light" value="배터리">
                             <div class="card-body" value="배터리" style="opacity : 1; background-color : transparent;">
-                                <h5 class="text-white mb-0" value="배터리" id="battery">배터리 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
+                                <h5 id = "battery" class="text-white mb-0" value="배터리" id="battery">배터리 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;" value="배터리">
                                     <div class="progress-bar" style="width:55%" value="배터리"></div>
                                 </div>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3 border-light" value="패션">
                             <div class="card-body" value="패션" style="opacity : 1; background-color : transparent;">
-                                <h5 class="text-white mb-0" value="패션" id="fass">패션 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
+                                <h5 id = "semi" class="text-white mb-0" value="패션" id="fass">패션 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;" value="패션">
                                     <div class="progress-bar" style="width:55%" value="패션"></div>
                                 </div>
@@ -164,7 +164,7 @@
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3 border-light" value="esg">
                             <div class="card-body" value="esg" style="opacity : 1; background-color : transparent;">
-                                <h5 class="text-white mb-0" value="esg">esg <span class="float-right"><i class="fa fa-envira"></i></span></h5>
+                                <h5 id = "erection" class="text-white mb-0" value="esg">esg <span class="float-right"><i class="fa fa-envira"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;" value="esg">
                                     <div class="progress-bar" style="width:55%" value="esg"></div>
                                 </div>
@@ -536,7 +536,49 @@
 <!-- Index js -->
 <script src="assets/js/index.js"></script>
 
+<script>
+window.onload = function() {
+    // 2023.02.05 배영준 [테마정보 세팅]
+    $.ajax({
+        type: 'get',
+        url: '/api/theme',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        dataType:'json',
+        success: function(result) {
+            console.log(result);
+            $.each(result.themeList, function(idx, val) {
+                console.log(idx + " " + val.themeName);
+                // 양수 음수 시각화
+                var upDown;
+                if(val.themeUpAndDown > 0){
+                    upDown = '+' + val.themeUpAndDown + '%';
+                } else {
+                    upDown = val.themeUpAndDown + '%';
+                }
 
+                console.log(upDown);
+
+                // 테마정보 세팅
+                if(val.themePk == 1){
+                    document.getElementById("car").innerText = val.themeName;
+                    document.getElementById("carUpDown").innerText = upDown;
+                } else if(val.themePk == 2){
+                    document.getElementById("semi").innerText = val.themeName;
+                    document.getElementById("batteryUpDown").innerText = upDown;
+                } else if(val.themePk == 3){
+                    document.getElementById("battery").innerText = val.themeName;
+                    document.getElementById("semiUpDown").innerText = upDown;
+                } else if(val.themePk == 4){
+                    document.getElementById("erection").innerText = val.themeName;
+                    document.getElementById("erectionUpDown").innerText = upDown;
+                }
+            });
+        }
+    });
+}
+</script>
 
 
 </body></html>
