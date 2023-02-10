@@ -53,6 +53,7 @@ html=requests.get(url, headers={'User-agent' : 'Mozilla/5.0'}).text
 bs=BeautifulSoup(html, "lxml")
 
 pgrr = bs.find('td', class_='pgRR')
+#pgrr.a['href'].split('=')[-1] 마지막 페이지 번호
 tdate = bs.find_all('span', class_='gray03')
 tdate.reverse()
 
