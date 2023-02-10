@@ -9,11 +9,13 @@ spring:
     ansi:
       enabled: ALWAYS #콘솔 컬러
 
-  #템플릿 엔진 - jstl, el 처럼 데이터를 html 템플릿에 맞게 변환해주는 역할
-  #freemarker :
-    #cache : false
-  #thymeleaf:
-    #cache : false
+#템플릿 엔진 - jstl, el 처럼 데이터를 html 템플릿에 맞게 변환해주는 역할
+#freemarker :
+#cache : false
+thymeleaf:
+  prefix: classpath:static/
+  suffix: .html
+  #cache : false
 
 ---
 # dev

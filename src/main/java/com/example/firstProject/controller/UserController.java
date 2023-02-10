@@ -13,13 +13,13 @@ import javax.validation.Valid;
 import java.util.HashMap;
 
 /**
-* 사용자 콘트롤러
-*
-* @author Choi Bo Kyung
-* @version 2023-01-22 최초생성
-*
-* <b>History:</b>
-**/
+ * 사용자 콘트롤러
+ *
+ * @author Choi Bo Kyung
+ * @version 2023-01-22 최초생성
+ *
+ * <b>History:</b>
+ **/
 
 @Slf4j
 @RestController
@@ -34,8 +34,8 @@ public class UserController {
     }
 
     /**
-    *사용자 인증 요청(로그인)
-    **/
+     *사용자 인증 요청(로그인)
+     **/
     @PostMapping(value = "/login", produces="application/json; charset=utf-8")
     @ResponseBody
     public HashMap<String,Object> login(@RequestBody @Valid LoginData loginData, HttpServletRequest request, HttpSession session) throws Exception{
@@ -68,10 +68,6 @@ public class UserController {
         session.invalidate();
         return ReturnCode.S_0.getHashMap();
     }
-
-
-
-
 
 }
 
