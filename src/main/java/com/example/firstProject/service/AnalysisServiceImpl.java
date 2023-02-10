@@ -66,4 +66,11 @@ public class AnalysisServiceImpl implements AnalysisService {
         }
         return themeList;
     }
+
+    /** 최근 10일 주가 조회 **/
+    @Override
+    public List<HashMap<String, Object>> getStock10Days(int stockPk) throws Exception {
+        List<HashMap<String,Object>> result = analysisMapper.getStock10Days(stockPk);
+        return ObjectUtils.keyToCamelCase(result);
+    }
 }

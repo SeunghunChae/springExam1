@@ -88,6 +88,18 @@ public class AnalysisController {
         return res;
     }
 
+    /** 최근 10일 주가 조회 **/
+    @GetMapping(value = "/analysis/{stockPk}", produces="application/json; charset=utf-8")
+    @ResponseBody
+    public HashMap<String,Object> getStock10Days(@PathVariable String stockPk, HttpServletRequest request, HttpSession session) throws Exception{
+
+        if(!ObjectUtils.isNumber(stockPk, true)) return ReturnCode.E_400.getHashMap();
+
+        List<HashMap<String,Object>> stock10Days = analysisService.getStock10Days(Integer.parseInt(stockPk));
+        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
+        res.put("stock10Days", stock10Days);
+        return res;
+    }
 
 
 }

@@ -30,4 +30,12 @@
           AND I.USER_PK = #{loginUserPk}
     </select>
 
+    <select id="getStock10Days" parameterType="int" resultType="HashMap">
+        SELECT S.STOCK_PK ,S.STOCK_NAME , S.STOCK_CODE, A.STOCK_HISTORY, A.DATE
+        FROM ANALYSIS A
+            LEFT JOIN STOCK S
+            ON A.STOCK_PK = S.STOCK_PK
+        WHERE S.STOCK_PK = #{stockPk}
+    </select>
+
 </mapper>
