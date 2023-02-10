@@ -36,6 +36,4 @@ public class UserServiceImpl implements UserService {
         HashMap<String,Object> result = userMapper.login(loginData);
         return ObjectUtils.keyToCamelCase(result);
     }
-
-
 }
