@@ -202,6 +202,7 @@ window.onload = function(){
 
 }
 
+var themePkey = 0;
 
 /*
 //동적으로 글씨 바꾸기
