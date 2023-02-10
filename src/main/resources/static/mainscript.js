@@ -23,6 +23,7 @@ function funcSubmit() {
     	return false;
     }
 
+
     // 2023.02.01 배영준 [로그인 정보 데이터전송]
 	$.ajax({
 	    type: 'post',
