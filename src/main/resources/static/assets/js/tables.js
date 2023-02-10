@@ -33,8 +33,13 @@ window.onload = function(){
             //console.log(table + '_name');
             var nameTemp = '.table_'+(i+1)+'_name';
             console.log(nameTemp);
-
             //$(nameTemp).text = "ddddd";
+
+
+            //등락률에 따른 데이터 색상 변경로직
+            var SelectRows = "TableBody" + (i+1);
+            //console.log(SelectRows);
+            var rows = document.getElementById(eval("'"+SelectRows+"'")).getElementsByTagName("tr");
 
             $("table_1_name").text("dddd");
 
@@ -51,6 +56,24 @@ window.onload = function(){
                 console.log(table);
                 $(table).append(table_data); 
             }
+
+            for(var j = 0; j < rows.length; j++){
+                var cells = rows[j].getElementsByTagName("td"); 
+                var UpsDowns = cells[2].firstChild.data;
+                if(UpsDowns > 0){
+                    cells[3].style.color="red";
+                    cells[4].style.color="red";     
+                }
+                else if(UpsDowns == 0){
+                    cells[3].style.color="black";
+                    cells[4].style.color="black";
+                }
+                else if(UpsDowns < 0){
+                    cells[3].style.color="blue";
+                    cells[4].style.color="blue";
+                }
+            
+            }
             
             //console.log(temp);
             
@@ -59,30 +82,30 @@ window.onload = function(){
       });
 
 
-    for(var j = 0; j < 6; j++){
+    //   for(var j = 0; j < 6; j++){
 
-        var SelectRows = "TableBody" + (j+1);
-        //console.log(SelectRows);
-        var rows = document.getElementById(eval("'"+SelectRows+"'")).getElementsByTagName("tr");
+    //     var SelectRows = "TableBody" + (j+1);
+    //     //console.log(SelectRows);
+    //     var rows = document.getElementById(eval("'"+SelectRows+"'")).getElementsByTagName("tr");
 
-        for(var i = 0; i < rows.length; i++){
-            var cells = rows[i].getElementsByTagName("td"); 
-            var UpsDowns = cells[2].firstChild.data;
-            if(UpsDowns > 0){
-                cells[2].style.color="red";
-                cells[3].style.color="red";     
-            }
-            else if(UpsDowns == 0){
-                cells[2].style.color="black";
-                cells[3].style.color="black";
-            }
-            else if(UpsDowns < 0){
-                cells[2].style.color="blue";
-                cells[3].style.color="blue";
-            }
+    //     for(var i = 0; i < rows.length; i++){
+    //         var cells = rows[i].getElementsByTagName("td"); 
+    //         var UpsDowns = cells[2].firstChild.data;
+    //         if(UpsDowns > 0){
+    //             cells[2].style.color="red";
+    //             cells[3].style.color="red";     
+    //         }
+    //         else if(UpsDowns == 0){
+    //             cells[2].style.color="black";
+    //             cells[3].style.color="black";
+    //         }
+    //         else if(UpsDowns < 0){
+    //             cells[2].style.color="blue";
+    //             cells[3].style.color="blue";
+    //         }
         
-        }
-    }
+    //     }
+    // }
 
 
 
