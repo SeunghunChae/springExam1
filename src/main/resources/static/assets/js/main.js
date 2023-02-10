@@ -44,6 +44,46 @@ function wait(sec) {
 }
 
 window.onload = function(){
+    // 2023.02.05 배영준 [테마정보 세팅]
+    $.ajax({
+        type: 'get',
+        url: '/api/theme',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        dataType:'json',
+        success: function(result) {
+            console.log(result);
+            $.each(result.themeList, function(idx, val) {
+                console.log(idx + " " + val.themeName);
+                // 양수 음수 시각화
+                var upDown;
+                if(val.themeUpAndDown > 0){
+                    upDown = '+' + val.themeUpAndDown + '%';
+                } else {
+                    upDown = val.themeUpAndDown + '%';
+                }
+
+                console.log(upDown);
+
+                // 테마정보 세팅
+                if(val.themePk == 1){
+                    document.getElementById("car").innerText = val.themeName;
+                    document.getElementById("carUpDown").innerText = upDown;
+                } else if(val.themePk == 2){
+                    document.getElementById("semi").innerText = val.themeName;
+                    document.getElementById("semiUpDown").innerText = upDown;
+                } else if(val.themePk == 3){
+                    document.getElementById("battery").innerText = val.themeName;
+                    document.getElementById("batteryUpDown").innerText = upDown;
+                } else if(val.themePk == 4){
+                    document.getElementById("erection").innerText = val.themeName;
+                    document.getElementById("erectionUpDown").innerText = upDown;
+                }
+            });
+        }
+    });
+
  	console.log(location.href);
 
     //클릭 이벤트
@@ -218,3 +258,46 @@ newdiv2.style.cssText="width: 90%";
 newdiv1.appendChild(newdiv2);
 newCell5.appendChild(newdiv1);
 */
+
+function getTopStock(){
+    // 2023.02.05 배영준 [테마정보 세팅]
+    $.ajax({
+        type: 'get',
+        url: '/api/theme/top4/themePk',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        dataType:'json',
+        success: function(result) {
+        console.log("top4");
+        console.log(result);
+//            $.each(result.themeList, function(idx, val) {
+//                console.log(idx + " " + val.themeName);
+//                // 양수 음수 시각화
+//                var upDown;
+//                if(val.themeUpAndDown > 0){
+//                    upDown = '+' + val.themeUpAndDown + '%';
+//                } else {
+//                    upDown = val.themeUpAndDown + '%';
+//                }
+//
+//                console.log(upDown);
+//
+//                // 테마정보 세팅
+//                if(val.themePk == 1){
+//                    document.getElementById("car").innerText = val.themeName;
+//                    document.getElementById("carUpDown").innerText = upDown;
+//                } else if(val.themePk == 2){
+//                    document.getElementById("semi").innerText = val.themeName;
+//                    document.getElementById("semiUpDown").innerText = upDown;
+//                } else if(val.themePk == 3){
+//                    document.getElementById("battery").innerText = val.themeName;
+//                    document.getElementById("batteryUpDown").innerText = upDown;
+//                } else if(val.themePk == 4){
+//                    document.getElementById("erection").innerText = val.themeName;
+//                    document.getElementById("erectionUpDown").innerText = upDown;
+//                }
+//            });
+        }
+    });
+}
