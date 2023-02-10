@@ -24,5 +24,5 @@ public interface AnalysisMapper {
 
     List<HashMap<String, Object>> getThemeTop4List(int themePk) throws Exception;
 
-    List<HashMap<String, Object>> getThemeBuyDetail(@Param("themePk") int themePk, @Param("loginUserPk")int loginUserPk) throws Exception;
+    List<HashMap<String, Object>> getStock10Days(int stockPk) throws Exception;
 }

@@ -26,4 +26,6 @@ public interface AnalysisService {
     /** 테마 별 수익률 상위 4개 - 전체 테마 **/
     List<HashMap<String, Object>> getThemeTop4ListAll() throws Exception;
 
+    /** 최근 10일 주가 조회 **/
+    List<HashMap<String, Object>> getStock10Days(int stockPk) throws Exception;
 }
