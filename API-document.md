@@ -4,7 +4,7 @@
 >POST<br>
 > localhost:8080/api/login
 
-- **Requset**
+- **Request**
 ```
 {
     "userId": "shchae822@naver.com",
@@ -27,7 +27,7 @@
 > DEL<br>
 > localhost:8080/api/logout
 
-- **Requset**
+- **Request**
 ```
 { === 없음 === }
 ```
@@ -46,7 +46,7 @@
 > GET<br>
 > localhost:8080/api/theme
 
-- **Requset**
+- **Request**
 ```
 { === 없음 === }
 ```
@@ -78,7 +78,7 @@
 > GET<br>
 > localhost:8080/api/theme/top4/{themePk}
 
-- **Requset**
+- **Request**
 ```
 { === 없음 === }
 ```
@@ -115,7 +115,7 @@
 > GET<br>
 > localhost:8080/api/theme/top4/all
 
-- **Requset**
+- **Request**
 ```
 { === 없음 === }
 ```
