@@ -25,4 +25,6 @@ public interface AnalysisMapper {
     List<HashMap<String, Object>> getThemeTop4List(int themePk) throws Exception;
 
     List<HashMap<String, Object>> getStock10Days(int stockPk) throws Exception;
+
+    List<HashMap<String, Object>> getCrawling() throws Exception;
 }

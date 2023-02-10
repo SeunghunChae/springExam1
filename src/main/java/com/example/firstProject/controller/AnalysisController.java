@@ -101,6 +101,17 @@ public class AnalysisController {
         return res;
     }
 
+    /** 크롤링 데이터 전체 조회 **/
+    @GetMapping(value = "/crawling", produces="application/json; charset=utf-8")
+    @ResponseBody
+    public HashMap<String,Object> getCrawling( HttpServletRequest request, HttpSession session) throws Exception{
+
+        List<HashMap<String,Object>> crawlingList = analysisService.getCrawling();
+        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
+        res.put("crawlingList", crawlingList);
+        return res;
+    }
+
 
 }
 
