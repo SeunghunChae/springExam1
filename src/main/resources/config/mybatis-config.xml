@@ -33,6 +33,5 @@
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/AnalysisMapper.xml"/>
-        <mapper resource="mapper/InvestmentMapper.xml"/>
     </mappers>
 </configuration>
