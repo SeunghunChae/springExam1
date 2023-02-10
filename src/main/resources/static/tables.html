@@ -10,6 +10,10 @@
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
+  <script type="text/javascript" src="assets/js/tables.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!--favicon-->
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <!-- simplebar CSS-->
@@ -141,21 +145,123 @@
      
       <div class="row mt-3">
         <div class="col-lg-6">
+
+          <!--1-1 테이블 start-->
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Basic Table</h5>
-			  <div class="table-responsive">
-               <table class="table">
+              <h5 id="table_1_name" class="card-title" style="font-size: 150%; text-align: center;">자동차</h5>
+			        <div class="table-responsive">
+               <table id="table_1" class="table" style="font-size: 110%; text-align: center;">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th scope="col">종목명</th>
+                      <th scope="col">종목 코드</th>
+                      <th scope="col">등락률</th>
+                      <th scope="col">가격</th>               
+                    </tr>
+                  </thead>
+                  <tbody id="TableBody1">
+                    <!-- <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>445441</td>
+                      <td>-1.21</td>
+                      <td>140,000</td>
+                    </tr>
+                    <tr id="ChartCol">
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>445441</td>
+                      <td>+2.13</td>
+                      <td>254,000</td>
+                    </tr>
+                    <tr id="ChartCol">
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>445441</td>
+                      <td>-5.21</td>
+                      <td>325,050</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+            </div>
+            </div>
+          </div>
+          <!--1-2 테이블 end-->
+
+
+        </div>
+        <div class="col-lg-6">
+
+          <!--1-2 테이블 start-->
+          <div class="card">
+            <div class="card-body">
+              <h5 id="table_2_name" class="card-title" style="font-size: 150%; text-align: center;">반도체</h5>
+			        <div class="table-responsive">
+               <table id="table_2" class="table" style="font-size: 110%; text-align: center;">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">종목명</th>
+                      <th scope="col">주가 코드</th>
+                      <th scope="col">등락률</th>
+                      <th scope="col">가격</th>   
+                    </tr>
+                  </thead>
+                  <tbody id="TableBody2">
+                    <!-- <tr>
+                      <th scope="row">1</th>
+                      <td>1</td>
+                      <td>445441</td>
+                      <td>+0.21</td>
+                      <td>140,000</td>
+                    </tr>
+                    <tr id="ChartCol">
+                      <th scope="row">2</th>
+                      <td>3</td>
+                      <td>445441</td>
+                      <td>+12.13</td>
+                      <td>254,000</td>
+                    </tr>
+                    <tr id="ChartCol">
+                      <th scope="row">3</th>
+                      <td>2</td>
+                      <td>445441</td>
+                      <td>-8.21</td>
+                      <td>325,050</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+            </div>
+            </div>
+          </div>
+          <!--1-2 테이블 end-->
+
+        </div>
+      </div><!--End Row-->
+
+
+      <div class="row">
+        <div class="col-lg-6">
+
+          <!--2-1 테이블 start-->
+          <div class="card">
+            <div class="card-body">
+              <h5 id="table_3_name" class="card-title" style="font-size: 150%; text-align: center;">배터리</h5>
+			      <div class="table-responsive">
+               <table id="table_3" class="table table-striped" style="font-size: 110%; text-align: center;">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">종목명</th>
+                      <th scope="col">주가 코드</th>
+                      <th scope="col">등락률</th>
+                      <th scope="col">가격</th>   
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <!-- <tr>
                       <th scope="row">1</th>
                       <td>Mark</td>
                       <td>Otto</td>
@@ -172,29 +278,34 @@
                       <td>Larry</td>
                       <td>the Bird</td>
                       <td>@twitter</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
             </div>
             </div>
           </div>
+          <!--2-1 테이블 end-->
+
         </div>
         <div class="col-lg-6">
+
+          <!--2-2 테이블 start-->
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Bordered Table</h5>
-			  <div class="table-responsive">
-              <table class="table table-bordered">
+              <h5 id="table_4_name" class="card-title" style="font-size: 150%; text-align: center;">건설</h5>
+			      <div class="table-responsive">
+              <table id="table_4" class="table table-hover" style="font-size: 110%; text-align: center;">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">종목명</th>
+                    <th scope="col">주가 코드</th>
+                    <th scope="col">등락률</th>
+                    <th scope="col">가격</th>   
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -210,113 +321,37 @@
                     <th scope="row">3</th>
                     <td colspan="2">Larry the Bird</td>
                     <td>@twitter</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
             </div>
           </div>
-        </div>
-      </div><!--End Row-->
+          <!--2-2 테이블 end-->
 
-
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Striped Table</h5>
-			  <div class="table-responsive">
-               <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Hover Table</h5>
-			  <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            </div>
-          </div>
         </div>
       </div><!--End Row-->
 
       <div class="row">
         <div class="col-lg-6">
+
+          <!--3-1 테이블 start-->
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Small Table</h5>
-			  <div class="table-responsive">
-               <table class="table table-sm">
+              <h5 id="table_5_name" class="card-title" style="font-size: 150%; text-align: center;">의약품</h5>
+			      <div class="table-responsive">
+              <table id="table_5" class="table table-hover" style="font-size: 110%; text-align: center;">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">종목명</th>
+                    <th scope="col">주가 코드</th>
+                    <th scope="col">등락률</th>
+                    <th scope="col">가격</th>   
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -332,75 +367,59 @@
                     <th scope="row">3</th>
                     <td colspan="2">Larry the Bird</td>
                     <td>@twitter</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
             </div>
           </div>
+          <!--3-1 테이블 end-->
+
+
+
         </div>
         <div class="col-lg-6">
+
+          <!--3-2 테이블 start-->
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Responsive Table</h5>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <h5 id="table_6_name" class="card-title" style="font-size: 150%; text-align: center;">테마종목 6</h5>
+			      <div class="table-responsive">
+              <table id="table_6" class="table table-hover" style="font-size: 110%; text-align: center;">
+                <thead>
+                  <th scope="col">#</th>
+                  <th scope="col">종목명</th>
+                  <th scope="col">주가 코드</th>
+                  <th scope="col">등락률</th>
+                  <th scope="col">가격</th>   
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
             </div>
           </div>
+          <!--3-2 테이블 end-->
+
+
         </div>
       </div><!--End Row-->
 	  
@@ -455,7 +474,7 @@
         <li id="theme10"></li>
         <li id="theme11"></li>
         <li id="theme12"></li>
-		<li id="theme13"></li>
+		    <li id="theme13"></li>
         <li id="theme14"></li>
         <li id="theme15"></li>
       </ul>

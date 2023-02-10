@@ -259,11 +259,12 @@ newdiv1.appendChild(newdiv2);
 newCell5.appendChild(newdiv1);
 */
 
-function getTopStock(){
+function getTopStock(themePk){
     // 2023.02.05 배영준 [테마정보 세팅]
+    console.log(themePk);
     $.ajax({
         type: 'get',
-        url: '/api/theme/top4/themePk',
+        url: '/api/theme/top4/' + themePk,
         headers: {
             "Content-Type": "application/json"
         },
