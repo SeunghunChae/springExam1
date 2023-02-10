@@ -5,7 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 var clicked='';
 
 window.onload = function(){
- 	console.log(location.href);
+ 	//console.log(location.href);
 }
 
 // 2023.01.06 채승훈 [로그인 버튼 기능]
