@@ -46,9 +46,13 @@ def select_a(tName):
 
 
 #크롤링 시작
+
+#종목코드
+code='054630'
+stockname='에이디칩스'
     
 #삼성전자 url
-url = 'https://finance.naver.com/item/sise_day.naver?code=005930'
+url = 'https://finance.naver.com/item/sise_day.naver?code='+code
 html=requests.get(url, headers={'User-agent' : 'Mozilla/5.0'}).text
 bs=BeautifulSoup(html, "lxml")
 
@@ -85,7 +89,7 @@ print(strdate)
 print(strprice)
 
 
-data=('삼성전자',strprice,strdate,"005930")
+data=(stockname,strprice,strdate,code)
 
 #db process
 
