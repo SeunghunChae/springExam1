@@ -28,7 +28,7 @@ def create_table(tName):
     conn=getConn()
     cur=conn.cursor()
     #tsmt='create table ' +tName+' (name varchar(30),price varchar(256),time varchar(256),stock_code varchar(10))'
-    tsmt='create table ' +tName+' (tema_name varchar(50),net_change varchar(30),no_stock varchar(20),3days_net_change varchar(30))'
+    tsmt='create table ' +tName+' (no int, tema_name varchar(50),net_change varchar(30),no_stock varchar(20),3days_net_change varchar(30))'
 
     cur.execute(tsmt)
     conn.commit()
@@ -37,7 +37,7 @@ def create_table(tName):
 def insert_a(tName,data):
     conn=getConn()
     cur=conn.cursor()
-    tsmt='insert into '+tName+' values(%s, %s, %s, %s)'
+    tsmt='insert into '+tName+' values(%s, %s, %s, %s, %s)'
     cur.execute(tsmt,data)
     conn.commit()
     conn.close()
@@ -116,7 +116,7 @@ delete_table('temascraping')
 
 #크롤링 끝 items는 인덱스가 1번부터 시작함
 for i in range(1,len(data)):
-    rowdata=(data[i][0],data[i][2],data[i][1],data[i][5])
+    rowdata=(i,data[i][0],data[i][2],data[i][1],data[i][5])
     insert_a('temascraping', rowdata)
 
 
