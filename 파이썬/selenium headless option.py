@@ -5,18 +5,22 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
+import time
+
 url = "https://www1.kiwoom.com/h/invest/research/VThemaGroupView"
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 
-service = Service('c:/chromedriver.exe')
+service = Service('c:\chromedriver.exe')
 driver = webdriver.Chrome(service=service, options=options)
 driver.get(url)
 
-wait = WebDriverWait(driver, 10000)
-table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.kwGridHead.tb-kw-grid")))
+time.sleep(1)
+
+#wait = WebDriverWait(driver, 10)
+#table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.kwGridHead.tb-kw-grid")))
 
 html = driver.page_source
 soup = BeautifulSoup(html, "lxml")
@@ -31,3 +35,4 @@ for row in table.find_all("tr"):
 print(items)
 
 driver.quit()
+
