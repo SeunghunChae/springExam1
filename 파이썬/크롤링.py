@@ -19,7 +19,9 @@ def getConn():
 def create_table(tName):
     conn=getConn()
     cur=conn.cursor()
-    tsmt='create table ' +tName+' (name varchar(30),price varchar(256),time varchar(256),stock_code varchar(10))'
+    #tsmt='create table ' +tName+' (name varchar(30),price varchar(256),time varchar(256),stock_code varchar(10))'
+    tsmt='create table ' +tName+' (tema_name varchar(50),net_change varchar(30),no_stock varchar(20),3days_net_change varchar(30))'
+
     cur.execute(tsmt)
     conn.commit()
     conn.close()
@@ -95,4 +97,6 @@ data=(stockname,strprice,strdate,code)
 
 #create_table("dummydata")
 
-insert_a("dummydata",data)
+#insert_a("dummydata",data)
+
+create_table("temaScraping")
