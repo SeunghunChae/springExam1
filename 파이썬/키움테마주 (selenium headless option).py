@@ -86,28 +86,38 @@ soup = BeautifulSoup(html, "lxml")
 table = soup.find("table", {"class": "kwGridHead tb-kw-grid"})
 
 #10개만 읽어옴
-items = []
 i=0
+
+data=[]
 for row in table.find_all("tr"):
-    if i<11:
-        data = [cell.text for cell in row.find_all("td")]
-        items.append(data)
-        i+=1
-    else :
+    #print("row.find_all(td)")
+    #print(row.find_all("td"))
+    #각 행마다
+    rowdata=[]
+    for cell in row.find_all("td"):
+        if str(cell.contents[0]).find("rate-increase") !=-1 :
+            #print(cell.contents[0])
+            rowdata.append("+"+cell.text)
+        elif str(cell.contents[0]).find("rate-decrease") !=-1:
+            #print(cell.contents[0])
+            rowdata.append("-"+cell.text)
+        else:
+            rowdata.append(cell.text)
+    i+=1
+    data.append(rowdata)
+    if i==31:
         break
 
 
 driver.quit()
 
-print(items)
-
 
 delete_table('temascraping')
 
 #크롤링 끝 items는 인덱스가 1번부터 시작함
-for i in range(1,11):
-    data=(items[i][0],items[i][2],items[i][1],items[i][5])
-    insert_a('temascraping', data)
-    
+for i in range(1,len(data)):
+    rowdata=(data[i][0],data[i][2],data[i][1],data[i][5])
+    insert_a('temascraping', rowdata)
+
 
 
