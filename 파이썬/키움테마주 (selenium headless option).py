@@ -53,6 +53,14 @@ def select_a(tName):
     #conn.commit()
     conn.close()
 
+def delete_table(tName):
+    conn=getConn()
+    cur=conn.cursor()
+    tsmt='DELETE FROM ' +tName
+    cur.execute(tsmt)
+    conn.commit()
+    conn.close()
+
 
 
 #크롤링 시작
@@ -93,6 +101,8 @@ driver.quit()
 
 print(items)
 
+
+delete_table('temascraping')
 
 #크롤링 끝 items는 인덱스가 1번부터 시작함
 for i in range(1,11):
