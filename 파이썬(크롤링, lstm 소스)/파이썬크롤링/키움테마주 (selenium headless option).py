@@ -78,7 +78,9 @@ driver.get(url)
 #1초 기다려야 js를 읽어올 수 있음
 time.sleep(1)
 
+#driver을 최대 10초까지 기다림
 #wait = WebDriverWait(driver, 10)
+#css셀렉터를 통해 table.kwGridHead.tb-kw-grid이 나올때까지 기다림
 #table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.kwGridHead.tb-kw-grid")))
 
 html = driver.page_source
