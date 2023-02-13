@@ -67,7 +67,7 @@ function getDateStr(myDate){
   if (month < 10) month = '0' + month
   if (day < 10) day = '0' + day
 
-  return (myDate.getFullYear() + '.' + month + '.' + day) // '2019.12.11'
+  return (myDate.getFullYear() + '' + month + '' + day) // '2019.12.11'
 }
 
 // 다음날을 구하는 함수
@@ -228,8 +228,11 @@ window.onload = function() {
                                     var list_price = data_arr[i]['price'].split('|')
                                     var list_date = data_arr[i]['time'].split('|')
                                     for (var j = 0; j < list_date.length; j++) {
-                                        var price=list_price[j].replace(',','');
-                                        var date=list_date[j].replace(',','');
+                                        price=list_price[j].replace(',','');
+                                        price.replace(',','');
+                                        price.replace(',','');
+                                        date=list_date[j].replace('.','-');
+                                        date.replace('.','-');
                                         //까만거
                                         value1_1.push(price);
                                         value1_2.push(price);
@@ -321,8 +324,8 @@ window.onload = function() {
         var ctx = document.getElementById('chart1').getContext('2d');
         Ldate.push('new');
         var last = Ldate.length - 2;
-        var pushVal1 = Number(value1_1[last]) + Number(value1_1[last]) * (Math.random() - 0.5) / 15;
-        var pushVal2 = Number(value2_1[last]) + Number(value2_1[last]) * (Math.random() - 0.5) / 15;
+        var pushVal1 = Number(value1_1[last]) + Number(value1_1[last]) * (Math.random() - 0.5) / 5;
+        var pushVal2 = Number(value2_1[last]) + Number(value2_1[last]) * (Math.random() - 0.5) / 5;
         value1_1.push(pushVal1.toString());
         value2_1.push(pushVal2.toString());
 
