@@ -85,7 +85,7 @@ window.onload = function() {
                 // 테마정보 세팅
                 num = idx + 1;
                 document.getElementById(idx + 1 + "").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
-                document.getElementById("upDown" + num).innerHTML = v가al.netChange;
+                document.getElementById("upDown" + num).innerHTML = val.netChange;
                 document.getElementById("upDown" + num).style.color = upDown;
                 document.getElementById("upDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
                 document.getElementById("upDown" + num).style.fontSize = "18px";
@@ -149,6 +149,9 @@ window.onload = function() {
             }, 1150)
         });
     }
+
+
+    var stock_name;
     //inner 카드 클릭 이벤트 추가
     var innerCard = document.querySelector("#innerCard").childNodes[1];
     for (var i = 0; i < innerCard.childElementCount; i++) {
@@ -161,7 +164,7 @@ window.onload = function() {
         for (var j = 0; j < temp.childNodes.length; j++) {
             temp.childNodes[j].addEventListener("click", function(event) {
                 if (event.target.tagName == 'H5') {
-                    var stock_name = event.target.textContent;
+                    stock_name = event.target.textContent;
                     //이름 찾았다. ajax로 가져옴
                     console.log(stock_name);
 
@@ -287,25 +290,25 @@ window.onload = function() {
         var ctx = document.getElementById('chart1').getContext('2d');
         lable.push('new');
         var last = lable.length - 2;
-        var pushVal1 = value1[last] + value1[last] * (Math.random() - 0.5) / 15;
-        var pushVal2 = value2[last] + value2[last] * (Math.random() - 0.5) / 15;
-        value1.push(pushVal1);
-        value2.push(pushVal2);
+        var pushVal1 = value1_1[last] + value1_1[last] * (Math.random() - 0.5) / 15;
+        var pushVal2 = value2_1[last] + value2_1[last] * (Math.random() - 0.5) / 15;
+        value1_1.push(pushVal1);
+        value2_1.push(pushVal2);
 
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: lable, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
                 datasets: [{
-                    label: 'New Visitor',
-                    data: value1, //[3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
+                    label: stock_name+' with 감성분석',
+                    data: value1_1, //[3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
                     backgroundColor: '#fff',
                     borderColor: "transparent",
                     pointRadius: "0",
                     borderWidth: 3
                 }, {
-                    label: 'Old Visitor',
-                    data: value2, //[7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
+                    label: stock_name,
+                    data: value2_1, //[7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
                     backgroundColor: "rgba(255, 255, 255, 0.25)",
                     borderColor: "transparent",
                     pointRadius: "0",
