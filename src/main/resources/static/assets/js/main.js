@@ -288,7 +288,7 @@ function getTopStock(themePk){
                 var num = idx + 1;
                 if(val.updownRate.substring(0,1) == '+'){
                     upDown = "red";
-                } else {
+                } else { 
                     upDown = "blue";
                 }
 
