@@ -30,6 +30,7 @@
 
     <link href="assets/css/animate.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/design.css" rel="stylesheet">
     <link href="css/animations.css" rel="stylesheet">
 
     <style type="text/css">/* Chart.js */
@@ -353,13 +354,63 @@
                             <ul class="list-inline" style="margin-bottom: 2.5%;">
                             <li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>내일 주가 추정 (댓글 감성분석)</li>
                             <li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>내일 주가 추정</li>
-                                <div id="btnRadio" style="display:inline-block;margin-left: 25%;margin-top: 0.4%;">
+                                <!-- <div id="btnRadio" style="display:inline-block;margin-left: 25%;margin-top: 0.4%;">
                                     <input type="radio" name="chk_info" value="1" checked="checked"> SNS
                                     <input type="radio" name="chk_info" value="2"> 뉴스 기사
                                     <input type="radio" name="chk_info" value="3"> 종목토론방
                                     <input type="radio" name="chk_info" value="4"> 통합
+                            </div> -->
+                            <div class="middle">
+                                <label>
+                                    <input type="radio" name="chk_info" checked = "checked" value="1"/>
+                                        <div class="front-end box">
+                                        <span>SNS</span>
+                                        </div>
+                                </label>
+                                <label>
+                                    <input type="radio" name="chk_info" value="2"/>
+                                        <div class="back-end box">
+                                        <span>뉴스 기사</span>
+                                        </div>
+                                </label>
+                                <label>
+                                    <input type="radio" name="chk_info" value="3"/>
+                                        <div class="back-end box">
+                                        <span>종목 토론방</span>
+                                        </div>
+                                </label>
+                                <label>
+                                    <input type="radio" name="chk_info" value="4"/>
+                                        <div class="back-end box">
+                                        <span>통합</span>
+                                        </div>
+                                </label>
                             </div>
-                            <button id="btnPredict" style="display: inline-block;float: right;margin-right: 1.6%;">분석</button>
+                            <div style="display: flex; justify-content: right;">
+                                <div class="frame-btn" href="#" id="btnPredict" >
+                                    <span class="frame-btn__outline frame-btn__outline--tall">
+                                    <span class="frame-btn__line frame-btn__line--tall"></span>
+                                    <span class="frame-btn__line frame-btn__line--flat"></span>
+                                    </span>
+                                    <span class="frame-btn__outline frame-btn__outline--flat">
+                                    <span class="frame-btn__line frame-btn__line--tall"></span>
+                                    <span class="frame-btn__line frame-btn__line--flat"></span>
+                                    </span>
+                                    <span class="frame-btn__solid"></span>
+                                    <span class="frame-btn__text">Analysis</span>
+                                </div>
+
+                            </div>
+
+
+                       
+                    <!-- <button id="btnPredict" 
+                    style="display: inline-block;float: right;margin-right: 1.6%; border: 0px; opacity: 0.9; background-color: gray; color: white;"
+                    >분석
+                </button> -->
+
+                
+
                             </ul>
                             <div class="chart-container-1"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
                                 <canvas id="chart1" style="display: block; width: 1020px; height: 260px;" width="1020" height="260" class="chartjs-render-monitor"></canvas>
