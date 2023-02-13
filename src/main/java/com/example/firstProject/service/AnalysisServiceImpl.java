@@ -60,7 +60,7 @@ public class AnalysisServiceImpl implements AnalysisService {
 
         // 테마 pk 별로 top4 리스트 조회 후, map 에 추가
         for (HashMap<String, Object> theme : themeList) {
-            int themePk = Integer.parseInt(theme.get("themePk").toString());
+            int themePk = Integer.parseInt(theme.get("no").toString());
             List<HashMap<String,Object>> top4List = analysisMapper.getThemeTop4List(themePk);
             theme.put("top4List",ObjectUtils.keyToCamelCase(top4List));
         }
