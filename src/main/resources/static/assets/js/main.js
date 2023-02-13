@@ -323,9 +323,9 @@ function getTopStock(themePk){
                 }
 
                 // 테마정보 세팅
-                document.getElementById("top4Jm" + num + "").innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
-//                document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
-//                document.getElementById("jmUpDown" + num).style.color = upDown;
+                document.getElementById("top4Jm1" + num + "").innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
+                document.getElementById("top4JmDr1" + num).innerHTML = val.updownRate;
+                document.getElementById("top4JmUpdown1" + num).style.color = upDown;
             });
         }
     });
