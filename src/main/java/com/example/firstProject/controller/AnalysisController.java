@@ -1,5 +1,7 @@
 package com.example.firstProject.controller;
 
+import com.example.firstProject.dto.DummyData;
+import com.example.firstProject.dto.LoginData;
 import com.example.firstProject.service.AnalysisService;
 import com.example.firstProject.util.ObjectUtils;
 import com.example.firstProject.util.ReturnCode;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 
@@ -115,11 +118,11 @@ public class AnalysisController {
     }
 
     /** 개별 종목 dummy 데이터 전체 조회 **/
-    @GetMapping(value = "/dummy", produces="application/json; charset=utf-8")
+    @PostMapping(value = "/dummy", produces="application/json; charset=utf-8")
     @ResponseBody
-    public HashMap<String,Object> getDummy( HttpServletRequest request, HttpSession session) throws Exception{
+    public HashMap<String,Object> getDummy(@RequestBody DummyData dummyData, HttpServletRequest request, HttpSession session) throws Exception{
 
-        List<HashMap<String,Object>> dummyList = analysisService.getDummy();
+        List<HashMap<String,Object>> dummyList = analysisService.getDummy(dummyData.getName());
         HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
         res.put("dummyList", dummyList);
         return res;

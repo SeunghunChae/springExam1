@@ -33,5 +33,5 @@ public interface AnalysisService {
     List<HashMap<String, Object>> getCrawling() throws Exception;
 
     /** 개별 종목 dummy 데이터 전체 조회 **/
-    List<HashMap<String, Object>> getDummy() throws Exception;
+    List<HashMap<String, Object>> getDummy(String name) throws Exception;
 }

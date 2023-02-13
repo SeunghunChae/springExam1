@@ -31,8 +31,8 @@
         select CODE, PRICE, DATE from CRAWLING
     </select>
 
-    <select id="getDummy" resultType="HashMap">
-        SELECT * FROM DUMMYDATA
+    <select id="getDummy" parameterType="string" resultType="HashMap">
+        SELECT * FROM DUMMYDATA WHERE NAME = #{name}
     </select>
 
 </mapper>
