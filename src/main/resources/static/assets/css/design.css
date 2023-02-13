@@ -1,10 +1,46 @@
 
+/*팝업 모달창*/
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal.show {
+    display: block;
+  }
+
+  .modal_body {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+
+    width: 800px;
+    height: 600px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background-color: rgb(201, 201, 201, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+
+
+
 /* 라디오버튼 */
 @import url("https://fonts.googleapis.com/css?family=Inter:400'");
-html {
-    background-color: #1a1a1a;
-    overflow: hidden;
-}
 .middle {
     width: 100%;
     text-align: center;
