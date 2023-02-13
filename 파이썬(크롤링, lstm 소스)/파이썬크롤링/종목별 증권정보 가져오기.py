@@ -5,6 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
+import json
+
 import requests
 import mysql.connector
 
@@ -121,6 +123,19 @@ driver = webdriver.Chrome(service=service, options=options)
 driver.get(url)
 
 
+with open('C:/Users/KOSCOM/Downloads/firstProject/firstProject/springExam1/파이썬(크롤링, lstm 소스)/파이썬크롤링/stockJSON.json', 'r', encoding='UTF-8') as f:
+    json_data = json.load(f)
+print(json_data)
+
+
+for i in range(len(meta_tema)):
+    list=select_a('stockintema',str(i))
+    print(list)
+
+
+
+#크롤링으로 종목코드 찾기 
+'''
 for i in range(len(meta_tema)):
     print(i)
     #1초 기다려야 js를 읽어올 수 있음
@@ -146,4 +161,4 @@ for i in range(len(meta_tema)):
         #print(span[0].text)
         j.append(span[0].text)
         print(j,'\n')
-
+'''
