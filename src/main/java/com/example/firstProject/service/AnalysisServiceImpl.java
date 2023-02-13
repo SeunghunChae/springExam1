@@ -80,4 +80,11 @@ public class AnalysisServiceImpl implements AnalysisService {
         List<HashMap<String,Object>> result = analysisMapper.getCrawling();
         return ObjectUtils.keyToCamelCase(result);
     }
+
+    /** 개별 종목 dummy 데이터 전체 조회 **/
+    @Override
+    public List<HashMap<String, Object>> getDummy() throws Exception {
+        List<HashMap<String,Object>> result = analysisMapper.getDummy();
+        return ObjectUtils.keyToCamelCase(result);
+    }
 }
