@@ -40,14 +40,14 @@ window.onload = function(){
                 document.getElementById(nameTemp).innerHTML = temp.themeList[i].top4List[j].temaName;
 
                 var table_data="";
-                table_data+="<tr>";    
+                table_data+="<tr>";
                 table_data+="<td>"+(j+1)+"</td>";
                 table_data+="<td>"+temp.themeList[i].top4List[j].stockName+"</td>";
                 table_data+="<td>"+temp.themeList[i].top4List[j].updownRate+"</td>";
                 table_data+="<td>"+temp.themeList[i].top4List[j].price+"</td>";
                 table_data+="<td>"+temp.themeList[i].top4List[j].volume+"</td>";
                 table_data+="</tr>";
-                               
+
                 $(table).append(table_data); 
                 //console.log(table_data);
 
@@ -98,7 +98,3 @@ window.onload = function(){
 
 }
 
-function ModalInfo(id){
-
-
-}
