@@ -15,7 +15,7 @@ window.onload = function(){
       };
 
 
-      $.ajax(settings).done(function (data) {
+      $.ajax(settings).success(function (data) {
         console.log(data);
 
         data_all = data;
@@ -91,6 +91,11 @@ window.onload = function(){
        
         }
 
+
+      }).error(function (error){
+
+        console.log(error);
+        if( error.responseJSON.resCode == 401 ) location.href = "http://localhost:8080/index.html";
 
       });
 
