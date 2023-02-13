@@ -63,75 +63,72 @@ def delete_table(tName):
     conn.commit()
     conn.close()
 
-while(1):
-    time.sleep(3)
-    print("시작")
 
-    #create_table('stockintema')
+
+#create_table('stockintema')
 
 
 
-    #create_table('temascraping')
+#create_table('temascraping')
 
-    #크롤링 시작
-    url = "https://www1.kiwoom.com/h/invest/research/VThemaGroupView"
+#크롤링 시작
+url = "https://www1.kiwoom.com/h/invest/research/VThemaGroupView"
 
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
 
-    service = Service('c:\chromedriver.exe')
-    driver = webdriver.Chrome(service=service, options=options)
-    driver.get(url)
+service = Service('c:\chromedriver.exe')
+driver = webdriver.Chrome(service=service, options=options)
+driver.get(url)
 
-    #1초 기다려야 js를 읽어올 수 있음
-    time.sleep(1)
+#1초 기다려야 js를 읽어올 수 있음
+time.sleep(1)
 
-    #driver을 최대 10초까지 기다림
-    #wait = WebDriverWait(driver, 10)
-    #css셀렉터를 통해 table.kwGridHead.tb-kw-grid이 나올때까지 기다림
-    #table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.kwGridHead.tb-kw-grid")))
+#driver을 최대 10초까지 기다림
+#wait = WebDriverWait(driver, 10)
+#css셀렉터를 통해 table.kwGridHead.tb-kw-grid이 나올때까지 기다림
+#table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.kwGridHead.tb-kw-grid")))
 
-    html = driver.page_source
-    soup = BeautifulSoup(html, "lxml")
+html = driver.page_source
+soup = BeautifulSoup(html, "lxml")
 
-    table = soup.find("table", {"class": "kwGridHead tb-kw-grid"})
+table = soup.find("table", {"class": "kwGridHead tb-kw-grid"})
 
-    #10개만 읽어옴
-    i=0
+#10개만 읽어옴
+i=0
 
-    data=[]
-    for row in table.find_all("tr"):
-        #print("row.find_all(td)")
-        #print(row.find_all("td"))
-        #각 행마다
-        rowdata=[]
-        for cell in row.find_all("td"):
-            if str(cell.contents[0]).find("rate-increase") !=-1 :
-                #print(cell.contents[0])
-                rowdata.append("+"+cell.text)
-            elif str(cell.contents[0]).find("rate-decrease") !=-1:
-                #print(cell.contents[0])
-                rowdata.append("-"+cell.text)
-            else:
-                rowdata.append(cell.text)
-        i+=1
-        data.append(rowdata)
-        if i==31:
-            break
-
-
-    driver.quit()
+data=[]
+for row in table.find_all("tr"):
+    #print("row.find_all(td)")
+    #print(row.find_all("td"))
+    #각 행마다
+    rowdata=[]
+    for cell in row.find_all("td"):
+        if str(cell.contents[0]).find("rate-increase") !=-1 :
+            #print(cell.contents[0])
+            rowdata.append("+"+cell.text)
+        elif str(cell.contents[0]).find("rate-decrease") !=-1:
+            #print(cell.contents[0])
+            rowdata.append("-"+cell.text)
+        else:
+            rowdata.append(cell.text)
+    i+=1
+    data.append(rowdata)
+    if i==31:
+        break
 
 
-    delete_table('temascraping')
+driver.quit()
 
-    #크롤링 끝 items는 인덱스가 1번부터 시작함
-    for i in range(1,len(data)):
-        #stock_inc와 desc는 부호제거
-        rowdata=(i,data[i][0],data[i][2],data[i][1],data[i][5],data[i][3][1:],data[i][4][1:],data[i][6])
-        insert_a('temascraping', rowdata)
 
+delete_table('temascraping')
+
+#크롤링 끝 items는 인덱스가 1번부터 시작함
+for i in range(1,len(data)):
+    #stock_inc와 desc는 부호제거
+    rowdata=(i,data[i][0],data[i][2],data[i][1],data[i][5],data[i][3][1:],data[i][4][1:],data[i][6])
+    insert_a('temascraping', rowdata)
 
 
 
