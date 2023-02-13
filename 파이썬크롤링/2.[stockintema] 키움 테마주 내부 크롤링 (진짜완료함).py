@@ -98,7 +98,7 @@ table = soup.find("table", {"class": "kwGridHead tb-kw-grid"})
 
 
 #읽어올 테마 개수
-no_tema=30
+no_tema=6
 
 
 i=0
