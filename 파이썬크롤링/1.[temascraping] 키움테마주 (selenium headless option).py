@@ -127,7 +127,7 @@ delete_table('temascraping')
 #크롤링 끝 items는 인덱스가 1번부터 시작함
 for i in range(1,len(data)):
     #stock_inc와 desc는 부호제거
-    rowdata=(i,data[i][0],data[i][2],data[i][1],data[i][5],data[i][3][1:],data[i][4][1:],data[i][6])
+    rowdata=(i-1,data[i][0],data[i][2],data[i][1],data[i][5],data[i][3][1:],data[i][4][1:],data[i][6])
     insert_a('temascraping', rowdata)
 
 
