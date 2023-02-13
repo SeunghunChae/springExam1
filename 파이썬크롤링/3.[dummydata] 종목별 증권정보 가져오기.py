@@ -58,7 +58,8 @@ def select_a(tName,no):
     for i in rs:
         temp=list(i)
         #종목코드 집어넣음
-        temp.append(json_data[temp[3]])
+        if "temp[3]" in json_data:    
+            temp.append(json_data[temp[3]])
         data.append(temp)
     #conn.commit()
     conn.close()
@@ -107,77 +108,78 @@ def delete_table(tName):
     conn.commit()
     conn.close()
 
+while(1):
+
+    with open('./stockJSON.json', 'r', encoding='UTF-8') as f:
+        json_data = json.load(f)
 
 
-with open('C:/Users/KOSCOM/Downloads/firstProject/firstProject/springExam1/파이썬(크롤링, lstm 소스)/파이썬크롤링/stockJSON.json', 'r', encoding='UTF-8') as f:
-    json_data = json.load(f)
+    meta_tema=select_b()
+    print(meta_tema)    
 
+    data=[]
+    for i in range(len(meta_tema)):
+        tlist=select_a('stockintema',str(meta_tema[i][0]))
+        for j in tlist:
+            data.append(j)
 
-meta_tema=select_b()
-print(meta_tema)    
+    #data 정렬
+    data.sort(key=lambda x:x[1])
 
-data=[]
-for i in range(len(meta_tema)):
-    tlist=select_a('stockintema',str(meta_tema[i][0]))
-    for j in tlist:
-        data.append(j)
+    #종목 검색
 
-#data 정렬
-data.sort(key=lambda x:x[1])
+    delete_table('dummydata')
 
-#종목 검색
-
-delete_table('dummydata')
-
-for j in range(len(data)):
-    code=data[j][13]
-    stockname=data[j][3]
-    print(code, stockname)
+    for j in range(len(data)):
+        if len(data[j])>13:
+            code=data[j][13]
+            stockname=data[j][3]
+            print(code, stockname)
 
 
 
 
-    url = 'https://finance.naver.com/item/sise_day.naver?code='+code
-    html=requests.get(url, headers={'User-agent' : 'Mozilla/5.0'}).text
-    bs=BeautifulSoup(html, "lxml")
+            url = 'https://finance.naver.com/item/sise_day.naver?code='+code
+            html=requests.get(url, headers={'User-agent' : 'Mozilla/5.0'}).text
+            bs=BeautifulSoup(html, "lxml")
 
-    pgrr = bs.find('td', class_='pgRR')
-    #pgrr.a['href'].split('=')[-1] 마지막 페이지 번호
-    tdate = bs.find_all('span', class_='gray03')
-    tdate.reverse()
+            pgrr = bs.find('td', class_='pgRR')
+            #pgrr.a['href'].split('=')[-1] 마지막 페이지 번호
+            tdate = bs.find_all('span', class_='gray03')
+            tdate.reverse()
 
-    tprice = bs.find_all('span','tah p11')
-    price=[]
-    i=0
-    for val in tprice:
-        if i%5==0:
-            price.append(val.text)
-        i+=1
-    price.reverse()
+            tprice = bs.find_all('span','tah p11')
+            price=[]
+            i=0
+            for val in tprice:
+                if i%5==0:
+                    price.append(val.text)
+                i+=1
+            price.reverse()
 
-    date=[]
-    for i in tdate:
-        date.append(i.text)
+            date=[]
+            for i in tdate:
+                date.append(i.text)
 
-    strdate=''
-    strprice=''
-
-
-    for i in range(10):
-        if i!=9:
-            strdate+=date[i]+'|'
-            strprice+=price[i]+'|'
-        else:
-            strdate+=date[i]
-            strprice+=price[i]
-    #print(strdate)
-    #print(strprice)
+            strdate=''
+            strprice=''
 
 
-    sdata=(stockname,strprice,strdate,code)
-    print(j,sdata)
+            for i in range(10):
+                if i!=9:
+                    strdate+=date[i]+'|'
+                    strprice+=price[i]+'|'
+                else:
+                    strdate+=date[i]
+                    strprice+=price[i]
+            #print(strdate)
+            #print(strprice)
 
-    insert_a("dummydata",sdata)
+
+            sdata=(stockname,strprice,strdate,code)
+            print(j,sdata)
+
+            insert_a("dummydata",sdata)
 
 
 '''

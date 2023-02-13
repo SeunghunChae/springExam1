@@ -3,6 +3,7 @@ package com.example.firstProject.controller;
 import com.example.firstProject.dto.LoginData;
 import com.example.firstProject.service.UserService;
 import com.example.firstProject.util.ReturnCode;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,14 +25,15 @@ import java.util.HashMap;
 @Slf4j
 @RestController
 @RequestMapping(value = "/api")
+@RequiredArgsConstructor
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
+    /*@Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
+    }*/
 
     /**
      *사용자 인증 요청(로그인)
