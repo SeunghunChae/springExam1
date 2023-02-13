@@ -41,6 +41,14 @@ def select_a(tName):
     #conn.commit()
     conn.close()
 
+def delete_table(tName):
+    conn=getConn()
+    cur=conn.cursor()
+    tsmt='DELETE FROM ' +tName'
+    cur.execute(tsmt)
+    conn.commit()
+    conn.close()
+
 
 #conn=getConn
 create_table('samsung')
