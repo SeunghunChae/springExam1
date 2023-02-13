@@ -140,6 +140,8 @@
     letter-spacing: 3px;
     text-decoration: none;
     position: relative;
+    cursor:pointer;
+    
 }
 .frame-btn__text {
     color: #bbb0aa;
@@ -147,9 +149,11 @@
     text-transform: uppercase;
     transition: 300ms ease;
     position: relative;
+    cursor: pointer;
 }
 .frame-btn:hover .frame-btn__text {
     color: white;
+    cursor:pointer;
 }
 .frame-btn__solid {
     position: absolute;

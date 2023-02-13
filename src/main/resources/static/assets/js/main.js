@@ -274,41 +274,59 @@ function getTopStock(themePk){
     console.log(themePk);
     $.ajax({
         type: 'get',
+        url: '/api/stock/' + themePk,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        dataType:'json',
+        success: function(result) {
+        console.log(result);
+            $.each(result.stockList, function(idx, val) {
+                console.log(idx + " " + val.updownRate);
+                // 양수 음수 시각화
+                var upDown;
+                var num = idx + 1;
+                if(val.updownRate.substring(0,1) == '+'){
+                    upDown = "red";
+                } else {
+                    upDown = "blue";
+                }
+
+                // 테마정보 세팅
+                document.getElementById("jm" + num + "").innerHTML = val.stockName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
+                document.getElementById("jmUpDown" + num).style.color = upDown;
+            });
+        }
+    });
+
+    // 테마별 수익률 TOP4 종목
+    $.ajax({
+        type: 'get',
         url: '/api/theme/top4/' + themePk,
         headers: {
             "Content-Type": "application/json"
         },
         dataType:'json',
         success: function(result) {
-        console.log("top4");
+        console.log("top4List");
         console.log(result);
-//            $.each(result.themeList, function(idx, val) {
-//                console.log(idx + " " + val.themeName);
-//                // 양수 음수 시각화
-//                var upDown;
-//                if(val.themeUpAndDown > 0){
-//                    upDown = '+' + val.themeUpAndDown + '%';
-//                } else {
-//                    upDown = val.themeUpAndDown + '%';
-//                }
-//
-//                console.log(upDown);
-//
-//                // 테마정보 세팅
-//                if(val.themePk == 1){
-//                    document.getElementById("car").innerText = val.themeName;
-//                    document.getElementById("carUpDown").innerText = upDown;
-//                } else if(val.themePk == 2){
-//                    document.getElementById("semi").innerText = val.themeName;
-//                    document.getElementById("semiUpDown").innerText = upDown;
-//                } else if(val.themePk == 3){
-//                    document.getElementById("battery").innerText = val.themeName;
-//                    document.getElementById("batteryUpDown").innerText = upDown;
-//                } else if(val.themePk == 4){
-//                    document.getElementById("erection").innerText = val.themeName;
-//                    document.getElementById("erectionUpDown").innerText = upDown;
-//                }
-//            });
+            $.each(result.top4List, function(idx, val) {
+                console.log(idx + " " + val.updownRate);
+                // 양수 음수 시각화
+                var upDown;
+                var num = idx + 1;
+                if(val.updownRate.substring(0,1) == '+'){
+                    upDown = "red";
+                } else {
+                    upDown = "blue";
+                }
+
+                // 테마정보 세팅
+                document.getElementById("top4Jm" + num + "").innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
+//                document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
+//                document.getElementById("jmUpDown" + num).style.color = upDown;
+            });
         }
     });
 }
