@@ -32,7 +32,7 @@
     </select>
 
     <select id="getDummy" parameterType="string" resultType="HashMap">
-        SELECT * FROM DUMMYDATA WHERE NAME = #{name}
+        SELECT DISTINCT * FROM DUMMYDATA WHERE NAME = #{name}
     </select>
 
     <select id="getDummyAll" resultType="HashMap">
