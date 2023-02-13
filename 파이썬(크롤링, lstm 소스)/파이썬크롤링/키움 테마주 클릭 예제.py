@@ -122,11 +122,46 @@ for i in data:
 #name에 테마 이름 가져옴
 
 #테마 내용 클릭
-driver.find_element(By.LINK_TEXT, name[0]).click()
+driver.find_element(By.LINK_TEXT, name[1]).click()
 
+
+#클릭 후 기다림
+time.sleep(1)
+
+#클릭한 후 html 다시 읽어옴
+html = driver.page_source
+soup = BeautifulSoup(html, "lxml")
+
+
+div = soup.find("div", {"class": "table-body"})
+table=div.find("table")
+
+
+
+data=[]
+for row in table.find_all("tr"):
+    rowdata=[]
+    for cell in row.find_all("td"):
+        #print(cell.text)
+        if str(cell.contents[0]).find("rate-increase") !=-1 :
+            #print(cell.contents[0])
+            rowdata.append("+"+cell.text)
+        elif str(cell.contents[0]).find("rate-decrease") !=-1:
+            #print(cell.contents[0])
+            rowdata.append("-"+cell.text)
+        else:
+            rowdata.append(cell.text)
+    #print("\n")
+    data.append(rowdata)
+del data[0]
+print(data)
+
+#btn-close, dialog-close-201
+#닫기버튼이 안눌린다 젠장
+driver.close()
 
 #kwGridTablePop > div > div.table-body > table > tbody > tr:nth-child(1) > td.al-l > a
-print(driver.find_element(By.CSS_SELECTOR, "#kwGridTablePop > div > div.table-body > table > tbody > tr:nth-child(1) > td.al-l > a").text)
+#print(driver.find_element(By.CSS_SELECTOR, "#kwGridTablePop > div > div.table-body > table > tbody > tr:nth-child(1) > td.al-l > a").text)
 
 #time.sleep(3)
 #driver.quit()
