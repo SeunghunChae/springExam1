@@ -66,9 +66,9 @@ window.onload = function(){
                 var upDown;
                 var num;
                 if(val.netChange.substring(0,1) == '+'){
-                    upDown = "red";
+                    upDown = "lightCoral";
                 } else {
-                    upDown = "blue";
+                    upDown = "SteelBlue";
                 }
 
                 // 테마정보 세팅
@@ -76,6 +76,9 @@ window.onload = function(){
                 document.getElementById(idx+1 + "").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
                 document.getElementById("upDown" + num).innerHTML = val.netChange;
                 document.getElementById("upDown" + num).style.color = upDown;
+                document.getElementById("upDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
+                document.getElementById("upDown" + num).style.fontSize = "18px";
+
             });
         }
     });

@@ -63,8 +63,10 @@ window.onload = function(){
                 console.log(UpsDowns);
 
                 if(UpsDowns > 0){
-                    cells[2].style.color="rgb(202, 14, 14)";
-                    cells[3].style.color="rgb(202, 14, 14)";   
+                    cells[2].style.color="lightCoral";
+                    cells[3].style.color="lightCoral";
+                    cells[2].style.textShadow="-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
+                    cells[3].style.textShadow="-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
                     
                 }
                 else if(UpsDowns == 0){
@@ -72,8 +74,10 @@ window.onload = function(){
                     cells[3].style.color="white";
                 }
                 else if(UpsDowns < 0){
-                    cells[2].style.color="blue";
-                    cells[3].style.color="blue";
+                    cells[2].style.color="SteelBlue";
+                    cells[3].style.color="SteelBlue";
+                    cells[2].style.textShadow="-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
+                    cells[3].style.textShadow="-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
                 }
             
             }
