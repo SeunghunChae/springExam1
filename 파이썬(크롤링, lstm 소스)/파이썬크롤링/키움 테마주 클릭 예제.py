@@ -28,7 +28,9 @@ def create_table(tName):
     conn=getConn()
     cur=conn.cursor()
     #tsmt='create table ' +tName+' (name varchar(30),price varchar(256),time varchar(256),stock_code varchar(10))'
-    tsmt='create table ' +tName+' (no int, tema_name varchar(50),net_change varchar(30),no_stock varchar(20),3days_net_change varchar(30),no_stock_inc varchar(20),no_stock_desc varchar(20), main_stock_name varchar(256))'
+    tsmt='create table ' +tName+' (no int, tema_name varchar(50), stock_name varchar(50) primary key, price varchar(20)'+\
+          ',net_change varchar(20),  updown_rate varchar(20), volume varchar(20), ask_price varchar(20), selling_ballance varchar(20)'+\
+          ',bid_price varchar(20), buy_ballance varchar(20), 3days_net_change varchar(20))'
 
     cur.execute(tsmt)
     conn.commit()
@@ -37,7 +39,7 @@ def create_table(tName):
 def insert_a(tName,data):
     conn=getConn()
     cur=conn.cursor()
-    tsmt='insert into '+tName+' values(%s, %s, %s, %s, %s,%s,%s,%s)'
+    tsmt='insert into '+tName+' values(%s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s)'
     cur.execute(tsmt,data)
     conn.commit()
     conn.close()
@@ -61,8 +63,10 @@ def delete_table(tName):
     conn.commit()
     conn.close()
 
+#delete_table('temascraping')
+#create_table('stockintema')
 
-#create_table('temascraping')
+
 
 #크롤링 시작
 url = "https://www1.kiwoom.com/h/invest/research/VThemaGroupView"
@@ -76,7 +80,7 @@ driver = webdriver.Chrome(service=service, options=options)
 driver.get(url)
 
 #1초 기다려야 js를 읽어올 수 있음
-time.sleep(1)
+time.sleep(0.5)
 
 #driver을 최대 10초까지 기다림
 #wait = WebDriverWait(driver, 10)
@@ -120,62 +124,93 @@ for i in data:
     #print(i[0],'\n')
     name.append(i[0])
 #name에 테마 이름 가져옴
+#print(name,'\n')
 
-#테마 내용 클릭
-driver.find_element(By.LINK_TEXT, name[1]).click()
-
-
-#클릭 후 기다림
-time.sleep(1)
-
-#클릭한 후 html 다시 읽어옴
-html = driver.page_source
-soup = BeautifulSoup(html, "lxml")
-
-
-div = soup.find("div", {"class": "table-body"})
-table=div.find("table")
 
 
 
 data=[]
-for row in table.find_all("tr"):
-    rowdata=[]
-    for cell in row.find_all("td"):
-        #print(cell.text)
-        if str(cell.contents[0]).find("rate-increase") !=-1 :
-            #print(cell.contents[0])
-            rowdata.append("+"+cell.text)
-        elif str(cell.contents[0]).find("rate-decrease") !=-1:
-            #print(cell.contents[0])
-            rowdata.append("-"+cell.text)
-        else:
-            rowdata.append(cell.text)
-    #print("\n")
-    data.append(rowdata)
-del data[0]
-print(data)
+for i in range(2):
+    tdata=[]
+    #n번 크롤링 다시 함
+    url = "https://www1.kiwoom.com/h/invest/research/VThemaGroupView"
 
-#btn-close, dialog-close-201
-#닫기버튼이 안눌린다 젠장
-driver.close()
+    options = webdriver.ChromeOptions()
+    #options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+
+    service = Service('c:\chromedriver.exe')
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.get(url)
+
+    time.sleep(0.5)   
+    
+    #테마 내용 클릭
+    driver.find_element(By.LINK_TEXT, name[i]).click()
+
+
+    #클릭 후 기다림
+    time.sleep(0.5)
+
+    #클릭한 후 html 다시 읽어옴
+    html = driver.page_source
+    soup = BeautifulSoup(html, "lxml")
+
+
+    div = soup.find("div", {"class": "table-body"})
+    table=div.find("table")
+
+
+    for row in table.find_all("tr"):
+        rowdata=[]
+        rowdata.append(i)
+        for cell in row.find_all("td"):
+            #print(cell.text)
+            if str(cell.contents[0]).find("rate-increase") !=-1 :
+                #print(cell.contents[0])
+                rowdata.append("+"+cell.text)
+            elif str(cell.contents[0]).find("rate-decrease") !=-1:
+                #print(cell.contents[0])
+                rowdata.append("-"+cell.text)
+            else:
+                rowdata.append(cell.text)
+        #print("\n")
+        
+        tdata.append(rowdata)
+    
+    del tdata[0]
+    for j in tdata:
+        data.append(j)
+    
+    #btn-close, dialog-close-201
+    #닫기버튼이 안눌린다 젠장 노가다 하기로 함
+    driver.quit()
 
 #kwGridTablePop > div > div.table-body > table > tbody > tr:nth-child(1) > td.al-l > a
 #print(driver.find_element(By.CSS_SELECTOR, "#kwGridTablePop > div > div.table-body > table > tbody > tr:nth-child(1) > td.al-l > a").text)
 
 #time.sleep(3)
 #driver.quit()
-'''
-driver.quit()
+
+#driver.quit()
 
 
-delete_table('temascraping')
+for i in data:
+    print(i,'\n')
+
+
+delete_table('stockintema')
+
+print('\n\n\n')
+
+print(name)
 
 #크롤링 끝 items는 인덱스가 1번부터 시작함
-for i in range(1,len(data)):
+for i in range(0,len(data)):
     #stock_inc와 desc는 부호제거
-    rowdata=(i,data[i][0],data[i][2],data[i][1],data[i][5],data[i][3][1:],data[i][4][1:],data[i][6])
-    insert_a('temascraping', rowdata)
+    rowdata=(data[i][0], name[i],data[i][1],data[i][2],data[i][3],data[i][4],data[i][5],data[i][6],data[i][7],data[i][8],data[i][9],data[i][10])
+    print(rowdata)
+    insert_a('stockintema', rowdata)
 
-'''
+
 

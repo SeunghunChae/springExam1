@@ -65,6 +65,10 @@ def delete_table(tName):
 
 
 
+#create_table('stockintema')
+
+
+
 #create_table('temascraping')
 
 #크롤링 시작
