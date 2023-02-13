@@ -28,7 +28,9 @@ def create_table(tName):
     conn=getConn()
     cur=conn.cursor()
     #tsmt='create table ' +tName+' (name varchar(30),price varchar(256),time varchar(256),stock_code varchar(10))'
-    tsmt='create table ' +tName+' (no int, tema_name varchar(50),net_change varchar(30),no_stock varchar(20),3days_net_change varchar(30),no_stock_inc varchar(20),no_stock_desc varchar(20), main_stock_name varchar(256))'
+    tsmt='create table ' +tName+' (no int, tema_name varchar(50), stock_name varchar(50), price varchar(20)'+\
+          ',net_change varchar(20),  updown_rate varchar(20), volume varchar(20), ask_price varchar(20), selling_ballance varchar(20)'+\
+          ',bid_price varchar(20), buy_ballance varchar(20), 3days_net_change varchar(20))'
 
     cur.execute(tsmt)
     conn.commit()
@@ -62,6 +64,11 @@ def delete_table(tName):
     conn.close()
 
 
+
+#create_table('stockintema')
+
+
+
 #create_table('temascraping')
 
 #크롤링 시작
@@ -78,7 +85,9 @@ driver.get(url)
 #1초 기다려야 js를 읽어올 수 있음
 time.sleep(1)
 
+#driver을 최대 10초까지 기다림
 #wait = WebDriverWait(driver, 10)
+#css셀렉터를 통해 table.kwGridHead.tb-kw-grid이 나올때까지 기다림
 #table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.kwGridHead.tb-kw-grid")))
 
 html = driver.page_source
