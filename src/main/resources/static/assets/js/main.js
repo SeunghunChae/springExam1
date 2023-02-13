@@ -198,82 +198,83 @@ window.onload = function() {
                                     var list_price = data_arr[i]['price'].split('|')
                                     var list_date = data_arr[i]['time'].split('|')
                                     for (var j = 0; j < list_date.length; j++) {
+                                        var price=list_price[j].replace(',','');
+                                        var date=list_date[j].replace(',','');
                                         //까만거
-                                        value1_1.push(list_price[j]);
-                                        value1_2.push(list_price[j]);
-                                        value1_3.push(list_price[j]);
-                                        value1_4.push(list_price[j]);
+                                        value1_1.push(price);
+                                        value1_2.push(price);
+                                        value1_3.push(price);
+                                        value1_4.push(price);
                                         //하얀거
-                                        value2_1.push(list_price[j]);
-                                        value2_2.push(list_price[j]);
-                                        value2_3.push(list_price[j]);
-                                        value2_4.push(list_price[j]);
+                                        value2_1.push(price);
+                                        value2_2.push(price);
+                                        value2_3.push(price);
+                                        value2_4.push(price);
 
-                                        Ldate.push(list_date[j]);
+                                        Ldate.push(date);
                                         //리스트 완성
-
-                                        //chart 1
-                                        var ctx = document.getElementById('chart1').getContext('2d');
-
-                                        var myChart = new Chart(ctx, {
-                                            type: 'line',
-                                            data: {
-                                                labels: Ldate,
-                                                datasets: [{
-                                                    label: stock_name + ' with 감성분석',
-                                                    data: value1_1,
-                                                    backgroundColor: '#fff',
-                                                    borderColor: "transparent",
-                                                    pointRadius: "0",
-                                                    borderWidth: 3
-                                                }, {
-                                                    label: stock_name,
-                                                    data: value2_1,
-                                                    backgroundColor: "rgba(255, 255, 255, 0.25)",
-                                                    borderColor: "transparent",
-                                                    pointRadius: "0",
-                                                    borderWidth: 1
-                                                }]
-                                            },
-                                            options: {
-                                                maintainAspectRatio: false,
-                                                legend: {
-                                                    display: false,
-                                                    labels: {
-                                                        fontColor: '#ddd',
-                                                        boxWidth: 40
-                                                    }
-                                                },
-                                                tooltips: {
-                                                    displayColors: false
-                                                },
-                                                scales: {
-                                                    xAxes: [{
-                                                        ticks: {
-                                                            beginAtZero: true,
-                                                            fontColor: '#ddd'
-                                                        },
-                                                        gridLines: {
-                                                            display: true,
-                                                            color: "rgba(221, 221, 221, 0.08)"
-                                                        },
-                                                    }],
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            beginAtZero: true,
-                                                            fontColor: '#ddd'
-                                                        },
-                                                        gridLines: {
-                                                            display: true,
-                                                            color: "rgba(221, 221, 221, 0.08)"
-                                                        },
-                                                    }]
-                                                }
-                                            }
-                                        }); //json
                                     } //for
                                 } //if
                             } //for
+                            //chart 1
+                            var ctx = document.getElementById('chart1').getContext('2d');
+
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: Ldate,
+                                    datasets: [{
+                                        label: stock_name + ' with 감성분석',
+                                        data: value1_1,
+                                        backgroundColor: '#fff',
+                                        borderColor: "transparent",
+                                        pointRadius: "0",
+                                        borderWidth: 3
+                                    }, {
+                                        label: stock_name,
+                                        data: value2_1,
+                                        backgroundColor: "rgba(255, 255, 255, 0.25)",
+                                        borderColor: "transparent",
+                                        pointRadius: "0",
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    legend: {
+                                        display: false,
+                                        labels: {
+                                            fontColor: '#ddd',
+                                            boxWidth: 40
+                                        }
+                                    },
+                                    tooltips: {
+                                        displayColors: false
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            ticks: {
+                                                beginAtZero: true,
+                                                fontColor: '#ddd'
+                                            },
+                                            gridLines: {
+                                                display: true,
+                                                color: "rgba(221, 221, 221, 0.08)"
+                                            },
+                                        }],
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true,
+                                                fontColor: '#ddd'
+                                            },
+                                            gridLines: {
+                                                display: true,
+                                                color: "rgba(221, 221, 221, 0.08)"
+                                            },
+                                        }]
+                                    }
+                                }
+                            }); //json
                         } //success
                     }); //ajax
                 } //if h5
@@ -300,14 +301,14 @@ window.onload = function() {
             data: {
                 labels: lable, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
                 datasets: [{
-                    label: stock_name+' with 감성분석',
+                    label: 'stock with analysis',
                     data: value1_1, //[3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
                     backgroundColor: '#fff',
                     borderColor: "transparent",
                     pointRadius: "0",
                     borderWidth: 3
                 }, {
-                    label: stock_name,
+                    label: 'stock',
                     data: value2_1, //[7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
                     backgroundColor: "rgba(255, 255, 255, 0.25)",
                     borderColor: "transparent",
@@ -525,6 +526,7 @@ function getTopStock(themePk) {
         }
     });
 
+ /*
     //chart 1
     var ctx = document.getElementById('chart1').getContext('2d');
 
@@ -585,6 +587,7 @@ function getTopStock(themePk) {
 
         }
     });
+    */
 }
 
 
