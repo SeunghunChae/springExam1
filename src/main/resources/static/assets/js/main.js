@@ -15,11 +15,12 @@ var value2=[7, 5, 14, 7, 12, 6, 10, 6, 11, 5];
 var count=0;
 var arr=['채승훈','최보경','배영준','이상민'];
 
-setInterval(function(){
-    var temp=document.getElementById("temp");
-    temp.textContent=arr[count%4];
-    count++;
-}, 1000);
+// TODO TEST 위한 주석
+//setInterval(function(){
+//    var temp=document.getElementById("temp");
+//    temp.textContent=arr[count%4];
+//    count++;
+//}, 1000);
 
 /*
 setInterval(function(){
@@ -35,17 +36,18 @@ setInterval(function(){
 }, 500);
 */
 
-function wait(sec) {
-
-    let start = Date.now(), now = start;
-
-    while (now - start < sec * 1000) {
-
-        now = Date.now();
-
-    }
-
-}
+// TODO TEST 위한 주석
+//function wait(sec) {
+//
+//    let start = Date.now(), now = start;
+//
+//    while (now - start < sec * 1000) {
+//
+//        now = Date.now();
+//
+//    }
+//
+//}
 
 window.onload = function(){
     // 2023.02.05 배영준 [테마정보 세팅]
