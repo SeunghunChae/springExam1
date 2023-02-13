@@ -4,22 +4,20 @@
 <mapper namespace="com.example.firstProject.mapper.AnalysisMapper">
 
     <select id="getThemeList" resultType="HashMap">
-        SELECT THEME_PK, THEME_NAME, THEME_UP_AND_DOWN
-        FROM THEME
+        SELECT * FROM TEMASCRAPING
     </select>
 
     <select id="getStockList" resultType="HashMap">
-        SELECT STOCK_PK, STOCK_NAME, STOCK_CODE, STOCK_PRICE, STOCK_UP_AND_DOWN
-        FROM STOCK
-        WHERE THEME_PK = #{themePk}
+        SELECT * FROM STOCKINTEMA WHERE NO = #{themePk}
     </select>
 
     <select id="getThemeTop4List" parameterType="int" resultType="HashMap">
-        SELECT STOCK_PK, STOCK_NAME, STOCK_CODE, STOCK_PRICE, STOCK_UP_AND_DOWN
-        FROM STOCK
-        WHERE THEME_PK = #{themePk}
-        ORDER BY STOCK_UP_AND_DOWN DESC LIMIT 4
+        SELECT * FROM STOCKINTEMA
+        WHERE NO = #{THEMEPK}
+        ORDER BY SUBSTR(UPDOWN_RATE,1,1) DESC, SUBSTR(UPDOWN_RATE,2) ASC
+        LIMIT 4
     </select>
+    <!-- UPDOWN_RATE : -0.06% 인 경우, 부호만 먼저 desc 정렬한 다음에 뒤쪽 숫자를 asc 정렬 -->
 
     <select id="getStock10Days" parameterType="int" resultType="HashMap">
         SELECT S.STOCK_PK ,S.STOCK_NAME , S.STOCK_CODE, A.STOCK_HISTORY, A.DATE
