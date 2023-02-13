@@ -88,6 +88,9 @@ window.onload = function() {
         },
         dataType: 'json',
         async: false,
+        error: function(error){
+            if( error.responseJSON.resCode == 401 ) location.href = "http://localhost:8080/index.html";
+        },
         success: function(result) {
             console.log(result);
 
@@ -212,6 +215,9 @@ window.onload = function() {
                         },
                         dataType: 'json',
                         async: false,
+                        error: function(error){
+                            if( error.responseJSON.resCode == 401 ) location.href = "http://localhost:8080/index.html";
+                        },
                         success: function(result) {
                             console.log(result);
                             $.each(result.dummyList, function(idx, val) {
@@ -457,6 +463,9 @@ function getTopStock(themePk) {
         },
         dataType: 'json',
         async: false,
+        error: function(error){
+            if( error.responseJSON.resCode == 401 ) location.href = "http://localhost:8080/index.html";
+        },
         success: function(result) {
             console.log(result);
             $.each(result.stockList, function(idx, val) {
@@ -491,6 +500,9 @@ function getTopStock(themePk) {
         },
         dataType: 'json',
         async: false,
+        error: function(error){
+            if( error.responseJSON.resCode == 401 ) location.href = "http://localhost:8080/index.html";
+        },
         success: function(result) {
             console.log("top4List");
             console.log(result);
