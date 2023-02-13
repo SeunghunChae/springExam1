@@ -449,86 +449,86 @@ function getTopStock(themePk){
 
 function getChart(stockPk){
     // 2023.02.05 배영준 [주식정보 세팅]
-    console.log(document.getElementById("jm" + stockPk).innerText);
-    $.ajax({
-        type: 'post',
-        url: '/api/dummy/' + document.getElementById("jm" + stockPk).innerText,
-        headers: {
-            "Content-Type": "application/json"
-        },
-        dataType:'json',
-        success: function(result) {
-            console.log(result);
-            $.each(result.dummyList, function(idx, val) {
-        }
-
-        "use strict";
-         //chart 1
-         var ctx = document.getElementById('chart1').getContext('2d');
-
-         var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-                    datasets: [{
-                        label: 'New Visitor',
-                        data: [9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000],
-                        backgroundColor: '#fff',
-                        borderColor: "transparent",
-                        pointRadius :"0",
-                        borderWidth: 3
-                    }, {
-                        label: 'Old Visitor',
-                        data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
-                        backgroundColor: "rgba(255, 255, 255, 0.25)",
-                        borderColor: "transparent",
-                        pointRadius :"0",
-                        borderWidth: 1
-                    }]
-                },
-            options: {
-                maintainAspectRatio: false,
-                legend: {
-                  display: false,
-                  labels: {
-                    fontColor: '#ddd',
-                    boxWidth:40
-                  }
-                },
-                tooltips: {
-                  displayColors:false
-                },
-              scales: {
-                  xAxes: [{
-                    ticks: {
-                        beginAtZero:true,
-                        fontColor: '#ddd'
-                    },
-                    gridLines: {
-                      display: true ,
-                      color: "rgba(221, 221, 221, 0.08)"
-                    },
-                  }],
-                   yAxes: [{
-                    ticks: {
-                        beginAtZero:true,
-                        fontColor: '#ddd'
-                    },
-                    gridLines: {
-                      display: true ,
-                      color: "rgba(221, 221, 221, 0.08)"
-                    },
-                  }]
-                 }
-
-             }
-            });
-                // 테마정보 세팅
-                document.getElementById("jm" + num + "").innerHTML = val.stockName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
-                document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
-                document.getElementById("jmUpDown" + num).style.color = upDown;
-                document.getElementById("jmUpDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
-                document.getElementById("jmUpDown" + num).style.fontSize = "18px";
-            });
-    });
+//    console.log(document.getElementById("jm" + stockPk).innerText);
+//    $.ajax({
+//        type: 'post',
+//        url: '/api/dummy/' + document.getElementById("jm" + stockPk).innerText,
+//        headers: {
+//            "Content-Type": "application/json"
+//        },
+//        dataType:'json',
+//        success: function(result) {
+//            console.log(result);
+//            $.each(result.dummyList, function(idx, val) {
+//        }
+//
+//        "use strict";
+//         //chart 1
+//         var ctx = document.getElementById('chart1').getContext('2d');
+//
+//         var myChart = new Chart(ctx, {
+//            type: 'line',
+//            data: {
+//                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+//                    datasets: [{
+//                        label: 'New Visitor',
+//                        data: [9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000],
+//                        backgroundColor: '#fff',
+//                        borderColor: "transparent",
+//                        pointRadius :"0",
+//                        borderWidth: 3
+//                    }, {
+//                        label: 'Old Visitor',
+//                        data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
+//                        backgroundColor: "rgba(255, 255, 255, 0.25)",
+//                        borderColor: "transparent",
+//                        pointRadius :"0",
+//                        borderWidth: 1
+//                    }]
+//                },
+//            options: {
+//                maintainAspectRatio: false,
+//                legend: {
+//                  display: false,
+//                  labels: {
+//                    fontColor: '#ddd',
+//                    boxWidth:40
+//                  }
+//                },
+//                tooltips: {
+//                  displayColors:false
+//                },
+//              scales: {
+//                  xAxes: [{
+//                    ticks: {
+//                        beginAtZero:true,
+//                        fontColor: '#ddd'
+//                    },
+//                    gridLines: {
+//                      display: true ,
+//                      color: "rgba(221, 221, 221, 0.08)"
+//                    },
+//                  }],
+//                   yAxes: [{
+//                    ticks: {
+//                        beginAtZero:true,
+//                        fontColor: '#ddd'
+//                    },
+//                    gridLines: {
+//                      display: true ,
+//                      color: "rgba(221, 221, 221, 0.08)"
+//                    },
+//                  }]
+//                 }
+//
+//             }
+//            });
+//                // 테마정보 세팅
+//                document.getElementById("jm" + num + "").innerHTML = val.stockName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+//                document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
+//                document.getElementById("jmUpDown" + num).style.color = upDown;
+//                document.getElementById("jmUpDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
+//                document.getElementById("jmUpDown" + num).style.fontSize = "18px";
+//            });
+//    });
 }
