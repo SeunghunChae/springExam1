@@ -62,7 +62,7 @@ public class RequestFilter implements Filter {
 
         if(logWrite){
 
-            logSb.append("\n---------[ client --> IsiSvr ]-------------------------------------------------------------");
+            logSb.append("\n-------------------------------------------------------------------");
             logSb.append("\nRequest URL         : ").append(url);
             logSb.append("\nRequest URI         : ").append(((HttpServletRequest) request).getRequestURI());
             logSb.append("\nRemote Host         : ").append(host);
