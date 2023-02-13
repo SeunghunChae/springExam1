@@ -7,16 +7,18 @@ var MouseTemp = '';
 
 //차트데이터
 //var lable = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+
 var value1_1 = [];
 var value1_2 = [];
 var value1_3 = [];
 var value1_4 = [];
-var value2_1 = [];
 var value2_2 = [];
+var value2_1 = [];
 var value2_3 = [];
 var value2_4 = [];
 
 var Ldate = []
+
 
 var data_arr = []
 
@@ -57,6 +59,24 @@ setInterval(function(){
 //    }
 //
 //}
+
+function getDateStr(myDate){
+  let month = myDate.getMonth() + 1
+  let day = myDate.getDate()
+
+  if (month < 10) month = '0' + month
+  if (day < 10) day = '0' + day
+
+  return (myDate.getFullYear() + '.' + month + '.' + day) // '2019.12.11'
+}
+
+// 다음날을 구하는 함수
+function nextDay(today) {
+  today = today.slice(0,4) + '.' + today.slice(4,6) + '.' + today.slice(6,) // ex) 2019.12.10
+  let d = new Date(today) // 2019-12-10T00:00:00.000Z
+  d.setDate(d.getDate() + 1)
+  return getDateStr(d)
+}
 
 window.onload = function() {
     // 2023.02.05 배영준 [테마정보 세팅]
@@ -170,7 +190,7 @@ window.onload = function() {
                 value2_2 = [];
                 value2_3 = [];
                 value2_4 = [];
-
+                
                 Ldate = []
 
                 if (event.target.tagName == 'H5') {
@@ -199,10 +219,9 @@ window.onload = function() {
                             });
                             //전역변수에 push
                             console.log(data_arr);
-                            var code_break=0;
+
                             //값을 찾는다
                             for (var i = 0; i < data_arr.length; i++) {
-                                if (code_break!=0) break;
                                 if (stock_name == data_arr[i]['name']) {
                                     console.log("값을 찾았다.");
 
@@ -226,7 +245,6 @@ window.onload = function() {
                                         //리스트 완성
                                     } //for
                                 } //if
-                                code_break+=1;
                             } //for
                             //chart 1
                             var ctx = document.getElementById('chart1').getContext('2d');
@@ -301,17 +319,17 @@ window.onload = function() {
     var btnPredict = document.querySelector("#btnPredict");
     btnPredict.addEventListener("click", function(event) {
         var ctx = document.getElementById('chart1').getContext('2d');
-        lable.push('new');
-        var last = lable.length - 2;
-        var pushVal1 = value1_1[last] + value1_1[last] * (Math.random() - 0.5) / 15;
-        var pushVal2 = value2_1[last] + value2_1[last] * (Math.random() - 0.5) / 15;
-        value1_1.push(pushVal1);
-        value2_1.push(pushVal2);
+        Ldate.push('new');
+        var last = Ldate.length - 2;
+        var pushVal1 = Number(value1_1[last]) + Number(value1_1[last]) * (Math.random() - 0.5) / 15;
+        var pushVal2 = Number(value2_1[last]) + Number(value2_1[last]) * (Math.random() - 0.5) / 15;
+        value1_1.push(pushVal1.toString());
+        value2_1.push(pushVal2.toString());
 
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: lable, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+                labels: Ldate,
                 datasets: [{
                     label: 'stock with analysis',
                     data: value1_1, //[3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
