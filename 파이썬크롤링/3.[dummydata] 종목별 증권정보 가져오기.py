@@ -110,14 +110,12 @@ def delete_table(tName):
 
 
 
-print("시작")
-
 with open('./stockJSON.json', 'r', encoding='UTF-8') as f:
     json_data = json.load(f)
 
 
 meta_tema=select_b()
-print(meta_tema)    
+#print(meta_tema)    
 
 data=[]
 for i in range(len(meta_tema)):
@@ -136,7 +134,7 @@ for j in range(len(data)):
     if len(data[j])!=13:
         code=data[j][13]
         stockname=data[j][3]
-        print(code, stockname)
+        #print(code, stockname)
 
 
 
@@ -179,11 +177,9 @@ for j in range(len(data)):
 
 
         sdata=(stockname,strprice,strdate,code)
-        #print(j,sdata)
+        print(j,sdata)
 
         insert_a("dummydata",sdata)
-
-print("끝")
 
 
 '''
