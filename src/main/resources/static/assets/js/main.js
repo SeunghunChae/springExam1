@@ -7,9 +7,19 @@ var MouseTemp = '';
 
 //차트데이터
 var lable=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
-var value1=[3, 3, 8, 5, 7, 4, 6, 4, 6, 3];
-var value2=[7, 5, 14, 7, 12, 6, 10, 6, 11, 5];
+var value1_1=[];
+var value1_2=[];
+var value1_3=[];
+var value1_4=[];
+var value2_1=[];
+var value2_2=[];
+var value2_3=[];
+var value2_4=[];
 
+var Ldate=[]
+
+
+var data_arr=[]
 
 //실시간 글씨 변경 사용법
 var count=0;
@@ -75,7 +85,7 @@ window.onload = function(){
                 // 테마정보 세팅
                 num = idx+1;
                 document.getElementById(idx+1 + "").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
-                document.getElementById("upDown" + num).innerHTML = val.netChange;
+                document.getElementById("upDown" + num).innerHTML = v가al.netChange;
                 document.getElementById("upDown" + num).style.color = upDown;
                 document.getElementById("upDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
                 document.getElementById("upDown" + num).style.fontSize = "18px";
@@ -88,7 +98,7 @@ window.onload = function(){
 
     var target=document.getElementById("cardList");
 
-        
+
     //마우스 오버 시각화
     for(var i =0;i<(target.childNodes.length-1)/2;i++){
          target.childNodes[i*2+1].addEventListener("mouseenter",function(event){
@@ -113,7 +123,7 @@ window.onload = function(){
    const btnModal = document.getElementById("btn-modal");
 
    modal.style.display = "flex";
-   
+
    modal.addEventListener("click", e => {
        const evTarget = e.target
        if(evTarget.classList.contains("modal")) {
@@ -140,6 +150,134 @@ window.onload = function(){
             },1150)
         });
     }
+    //inner 카드 클릭 이벤트 추가
+    var innerCard=document.querySelector("#innerCard").childNodes[1];
+    for(var i =0; i<innerCard.childElementCount;i++){
+        k=(i+1)*2-1;
+        var temp=innerCard.childNodes[k];
+        temp.addEventListener("click", function(event){
+            console.log(event);
+        })
+        //자식도 싸그리 클릭이벤트를 넣는다
+        for (var j=0; j<temp.childNodes.length;j++){
+            temp.childNodes[j].addEventListener("click", function(event){
+                if(event.target.tagName=='H5'){
+                    var stock_name=event.target.textContent;
+                    //이름 찾았다. ajax로 가져옴
+                    console.log(stock_name);
+
+                    inputdata={"name" : stock_name}
+
+                    //주가정보 가져오기 시작
+                    $.ajax({
+                            type: 'get',
+                            url: '/api/dummy/',
+                            data: inputdata,
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            dataType:'json',
+                            async:false,
+                            success: function(result) {
+                                console.log(result);
+                                $.each(result.dummyList, function(idx, val) {
+                                    data_arr.push(val);
+                                });
+                                //전역변수에 push
+                                console.log(data_arr);
+
+                                //값을 찾는다
+                                for(var i=0; i<data_arr.length; i++){
+                                    if(stock_name==data_arr[i]['name']){
+                                        console.log("값을 찾았다.");
+
+                                        var list_price=data_arr[i]['price'].split('|')
+                                        var list_date=data_arr[i]['time'].split('|')
+                                        for(var j=0; j<list_date.length;j++){
+                                            //까만거
+                                            value1_1.push(list_price[j]);
+                                            value1_2.push(list_price[j]);
+                                            value1_3.push(list_price[j]);
+                                            value1_4.push(list_price[j]);
+                                            //하얀거
+                                            value2_1.push(list_price[j]);
+                                            value2_2.push(list_price[j]);
+                                            value2_3.push(list_price[j]);
+                                            value2_4.push(list_price[j]);
+
+                                            Ldate.push(list_date[j]);
+                                            //리스트 완성
+
+                                            //chart 1
+                                            var ctx = document.getElementById('chart1').getContext('2d');
+
+                                            var myChart = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                   labels: Ldate,
+                                                   datasets: [{
+                                                       label: stock_name+ ' with 감성분석',
+                                                       data: value1_1,
+                                                       backgroundColor: '#fff',
+                                                       borderColor: "transparent",
+                                                       pointRadius :"0",
+                                                       borderWidth: 3
+                                                   }, {
+                                                       label: stock_name,
+                                                       data: value2_1,
+                                                       backgroundColor: "rgba(255, 255, 255, 0.25)",
+                                                       borderColor: "transparent",
+                                                       pointRadius :"0",
+                                                       borderWidth: 1
+                                                   }]
+                                               },
+                                            options: {
+                                               maintainAspectRatio: false,
+                                               legend: {
+                                                 display: false,
+                                                 labels: {
+                                                   fontColor: '#ddd',
+                                                   boxWidth:40
+                                                 }
+                                               },
+                                               tooltips: {
+                                                 displayColors:false
+                                               },
+                                             scales: {
+                                                 xAxes: [{
+                                                   ticks: {
+                                                       beginAtZero:true,
+                                                       fontColor: '#ddd'
+                                                   },
+                                                   gridLines: {
+                                                     display: true ,
+                                                     color: "rgba(221, 221, 221, 0.08)"
+                                                   },
+                                                 }],
+                                                  yAxes: [{
+                                                   ticks: {
+                                                       beginAtZero:true,
+                                                       fontColor: '#ddd'
+                                                   },
+                                                   gridLines: {
+                                                     display: true ,
+                                                     color: "rgba(221, 221, 221, 0.08)"
+                                                   },
+                                                 }]
+                                                }
+                                            }
+                                            });//json
+                                    }//for
+                                }//if
+                            }//for
+                        }//success
+                });//ajax
+            }//if h5
+        })
+     }
+    }
+
+
 
 
     //분석 버튼 이벤트 추가
@@ -385,65 +523,65 @@ function getTopStock(themePk){
     });
 
    //chart 1
-//    var ctx = document.getElementById('chart1').getContext('2d');
-//
-//    var myChart = new Chart(ctx, {
-//       type: 'line',
-//       data: {
-//               labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-//               datasets: [{
-//                   label: 'New Visitor',
-//                   data: ['2000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '2000'],
-//                   backgroundColor: '#fff',
-//                   borderColor: "transparent",
-//                   pointRadius :"0",
-//                   borderWidth: 3
-//               }, {
-//                   label: 'Old Visitor',
-//                   data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
-//                   backgroundColor: "rgba(255, 255, 255, 0.25)",
-//                   borderColor: "transparent",
-//                   pointRadius :"0",
-//                   borderWidth: 1
-//               }]
-//           },
-//       options: {
-//           maintainAspectRatio: false,
-//           legend: {
-//             display: false,
-//             labels: {
-//               fontColor: '#ddd',
-//               boxWidth:40
-//             }
-//           },
-//           tooltips: {
-//             displayColors:false
-//           },
-//         scales: {
-//             xAxes: [{
-//               ticks: {
-//                   beginAtZero:true,
-//                   fontColor: '#ddd'
-//               },
-//               gridLines: {
-//                 display: true ,
-//                 color: "rgba(221, 221, 221, 0.08)"
-//               },
-//             }],
-//              yAxes: [{
-//               ticks: {
-//                   beginAtZero:true,
-//                   fontColor: '#ddd'
-//               },
-//               gridLines: {
-//                 display: true ,
-//                 color: "rgba(221, 221, 221, 0.08)"
-//               },
-//             }]
-//            }
-//
-//        }
-//       });
+    var ctx = document.getElementById('chart1').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+       type: 'line',
+       data: {
+               labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+               datasets: [{
+                   label: 'New Visitor',
+                   data: ['2000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '2000'],
+                   backgroundColor: '#fff',
+                   borderColor: "transparent",
+                   pointRadius :"0",
+                   borderWidth: 3
+               }, {
+                   label: 'Old Visitor',
+                   data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
+                   backgroundColor: "rgba(255, 255, 255, 0.25)",
+                   borderColor: "transparent",
+                   pointRadius :"0",
+                   borderWidth: 1
+               }]
+           },
+       options: {
+           maintainAspectRatio: false,
+           legend: {
+             display: false,
+             labels: {
+               fontColor: '#ddd',
+               boxWidth:40
+             }
+           },
+           tooltips: {
+             displayColors:false
+           },
+         scales: {
+             xAxes: [{
+               ticks: {
+                   beginAtZero:true,
+                   fontColor: '#ddd'
+               },
+               gridLines: {
+                 display: true ,
+                 color: "rgba(221, 221, 221, 0.08)"
+               },
+             }],
+              yAxes: [{
+               ticks: {
+                   beginAtZero:true,
+                   fontColor: '#ddd'
+               },
+               gridLines: {
+                 display: true ,
+                 color: "rgba(221, 221, 221, 0.08)"
+               },
+             }]
+            }
+
+        }
+       });
 }
 
 
