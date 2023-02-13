@@ -98,7 +98,7 @@ table = soup.find("table", {"class": "kwGridHead tb-kw-grid"})
 
 
 
-no_tema=7
+no_tema=30
 
 
 #10개만 읽어옴
