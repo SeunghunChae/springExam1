@@ -6,7 +6,7 @@ var clicked = '';
 var MouseTemp = '';
 
 //차트데이터
-var lable = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+//var lable = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
 var value1_1 = [];
 var value1_2 = [];
 var value1_3 = [];
@@ -17,7 +17,6 @@ var value2_3 = [];
 var value2_4 = [];
 
 var Ldate = []
-
 
 var data_arr = []
 
@@ -163,6 +162,17 @@ window.onload = function() {
         //자식도 싸그리 클릭이벤트를 넣는다
         for (var j = 0; j < temp.childNodes.length; j++) {
             temp.childNodes[j].addEventListener("click", function(event) {
+                value1_1 = [];
+                value1_2 = [];
+                value1_3 = [];
+                value1_4 = [];
+                value2_1 = [];
+                value2_2 = [];
+                value2_3 = [];
+                value2_4 = [];
+
+                Ldate = []
+
                 if (event.target.tagName == 'H5') {
                     stock_name = event.target.textContent;
                     //이름 찾았다. ajax로 가져옴
@@ -189,9 +199,10 @@ window.onload = function() {
                             });
                             //전역변수에 push
                             console.log(data_arr);
-
+                            var code_break=0;
                             //값을 찾는다
                             for (var i = 0; i < data_arr.length; i++) {
+                                if (code_break!=0) break;
                                 if (stock_name == data_arr[i]['name']) {
                                     console.log("값을 찾았다.");
 
@@ -215,6 +226,7 @@ window.onload = function() {
                                         //리스트 완성
                                     } //for
                                 } //if
+                                code_break+=1;
                             } //for
                             //chart 1
                             var ctx = document.getElementById('chart1').getContext('2d');
