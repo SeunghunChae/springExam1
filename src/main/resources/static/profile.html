@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>Dashtreme Admin - Free Dashboard for Bootstrap 4 by Codervent</title>
+  <title>KOSCOM STOCK FORECAST</title>
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
@@ -37,138 +37,86 @@
  <div id="wrapper">
 
   <!--Start sidebar-wrapper-->
-   <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
-     <div class="brand-logo">
-      <a href="main.html">
-       <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-       <h5 class="logo-text">Dashtreme Admin</h5>
-     </a>
-   </div>
-   <ul class="sidebar-menu do-nicescrol">
-      <li class="sidebar-header">MAIN NAVIGATION</li>
-      <li>
-        <a href="main.html">
-          <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
-        </a>
-      </li>
+     <div id="sidebar-wrapper" data-simplebar="init" data-simplebar-auto-hide="true" class="active"><div class="simplebar-track vertical" style="visibility: hidden;"><div class="simplebar-scrollbar"></div></div><div class="simplebar-track horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar"></div></div><div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px;"><div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px;">
+         <div class="brand-logo">
+             <img src="assets/images/koscom_logo.png" width="80%" height="60%">
+             <!-- <a href="index.html">
 
-      <li>
-        <a href="icons.html">
-          <i class="zmdi zmdi-invert-colors"></i> <span>UI Icons</span>
-        </a>
-      </li>
+            </a> -->
+         </div>
+         <ul class="sidebar-menu do-nicescrol in">
+             <li class="sidebar-header">MAIN PAGE</li>
+             <li class="active">
+                 <a href="main.html" class="active">
+                     <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+                 </a>
+             </li>
 
-      <li>
-        <a href="forms.html">
-          <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
-        </a>
-      </li>
+             <li>
+                 <a href="tables.html">
+                     <i class="zmdi zmdi-grid"></i> <span>투자현황</span>
+                 </a>
+             </li>
 
-      <li>
-        <a href="tables.html">
-          <i class="zmdi zmdi-grid"></i> <span>Tables</span>
-        </a>
-      </li>
+             <li>
+                 <a href="profile.html">
+                     <i class="zmdi zmdi-face"></i> <span>Team Profile</span>
+                 </a>
+             </li>
 
-      <li>
-        <a href="calendar.html">
-          <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-          <small class="badge float-right badge-light">New</small>
-        </a>
-      </li>
 
-      <li>
-        <a href="profile.html">
-          <i class="zmdi zmdi-face"></i> <span>Profile</span>
-        </a>
-      </li>
+         </ul>
 
-      <li>
-        <a href="login.html" target="_blank">
-          <i class="zmdi zmdi-lock"></i> <span>Login</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="register.html" target="_blank">
-          <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-        </a>
-      </li>
-	  
-      <li class="sidebar-header">LABELS</li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a></li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i> <span>Warning</span></a></li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a></li>
-
-    </ul>
-   
-   </div>
+     </div></div></div>
    <!--End sidebar-wrapper-->
 
 <!--Start topbar header-->
-<header class="topbar-nav">
- <nav class="navbar navbar-expand fixed-top">
-  <ul class="navbar-nav mr-auto align-items-center">
-    <li class="nav-item">
-      <a class="nav-link toggle-menu" href="javascript:void();">
-       <i class="icon-menu menu-icon"></i>
-     </a>
-    </li>
-    <li class="nav-item">
-      <form class="search-bar">
-        <input type="text" class="form-control" placeholder="Enter keywords">
-         <a href="javascript:void();"><i class="icon-magnifier"></i></a>
-      </form>
-    </li>
-  </ul>
-     
-  <ul class="navbar-nav align-items-center right-nav-link">
-    <li class="nav-item dropdown-lg">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
-      <i class="fa fa-envelope-open-o"></i></a>
-    </li>
-    <li class="nav-item dropdown-lg">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
-      <i class="fa fa-bell-o"></i></a>
-    </li>
-    <li class="nav-item language">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();"><i class="fa fa-flag"></i></a>
-      <ul class="dropdown-menu dropdown-menu-right">
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-gb mr-2"></i> English</li>
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-fr mr-2"></i> French</li>
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-cn mr-2"></i> Chinese</li>
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-de mr-2"></i> German</li>
-        </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-        <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-right">
-       <li class="dropdown-item user-details">
-        <a href="javaScript:void();">
-           <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
-            <div class="media-body">
-            <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
-            <p class="user-subtitle">mccoy@example.com</p>
-            </div>
-           </div>
-          </a>
-        </li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-</header>
+ <header class="topbar-nav">
+     <nav class="navbar navbar-expand fixed-top">
+         <ul class="navbar-nav mr-auto align-items-center">
+             <li class="nav-item">
+                 <a class="nav-link toggle-menu" href="javascript:void();">
+                     <i class="icon-menu menu-icon"></i>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <form class="search-bar">
+                     <input type="text" class="form-control" placeholder="Enter keywords">
+                     <a href="javascript:void();"><i class="icon-magnifier"></i></a>
+                 </form>
+             </li>
+         </ul>
+
+         <ul class="navbar-nav align-items-center right-nav-link">
+             <li class="nav-item">
+                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                     <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
+                 </a>
+                 <ul class="dropdown-menu dropdown-menu-right">
+                     <li class="dropdown-item user-details">
+                         <a href="javaScript:void();">
+                             <div class="media">
+                                 <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                                 <div class="media-body">
+                                     <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
+                                     <p class="user-subtitle">mccoy@example.com</p>
+                                 </div>
+                             </div>
+                         </a>
+                     </li>
+                     <li class="dropdown-divider"></li>
+                     <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
+                     <li class="dropdown-divider"></li>
+                     <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
+                     <li class="dropdown-divider"></li>
+                     <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
+                     <li class="dropdown-divider"></li>
+                     <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+                 </ul>
+             </li>
+         </ul>
+     </nav>
+ </header>
 <!--End topbar header-->
 
 <div class="clearfix"></div>
@@ -180,12 +128,12 @@
         <div class="col-lg-4">
            <div class="card profile-card-2">
             <div class="card-img-block">
-                <img class="img-fluid" src="https://via.placeholder.com/800x500" alt="Card image cap">
+                <img class="img-fluid" src="assets/images/team.png" alt="Card image cap">
             </div>
             <div class="card-body pt-5">
-                <img src="https://via.placeholder.com/110x110" alt="profile-image" class="profile">
-                <h5 class="card-title">Mark Stern</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <img src="assets/images/profile.png" alt="profile-image" class="profile">
+                <h5 class="card-title">STOCKER</h5>
+                <p class="card-text">뉴스, 종목토론방, SNS 등 <br> 다방면 감성분석을 통해 주가를 예측합니다!<br><br></p>
                 <div class="icon-block">
                   <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
 				  <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
@@ -220,30 +168,6 @@
                     </div>
                   </div>
                    <hr>
-                  <div class="media align-items-center">
-                   <div><img src="assets/images/timeline/angular-icon.svg" class="skill-img" alt="skill img"></div>
-                     <div class="media-body text-left ml-3">
-                       <div class="progress-wrapper">
-                         <p>AngularJS <span class="float-right">70%</span></p>
-                         <div class="progress" style="height: 5px;">
-                          <div class="progress-bar" style="width:70%"></div>
-                         </div>
-                        </div>                   
-                    </div>
-                  </div>
-                    <hr>
-                  <div class="media align-items-center">
-                   <div><img src="assets/images/timeline/react.svg" class="skill-img" alt="skill img"></div>
-                     <div class="media-body text-left ml-3">
-                       <div class="progress-wrapper">
-                         <p>React JS <span class="float-right">35%</span></p>
-                         <div class="progress" style="height: 5px;">
-                          <div class="progress-bar" style="width:35%"></div>
-                         </div>
-                        </div>                   
-                    </div>
-                  </div>
-                  
               </div>
         </div>
 
@@ -265,61 +189,56 @@
             </ul>
             <div class="tab-content p-3">
                 <div class="tab-pane active" id="profile">
-                    <h5 class="mb-3">User Profile</h5>
+                    <h5 class="mb-3">사용자 정보</h5>
                     <div class="row">
                         <div class="col-md-6">
                             <h6>About</h6>
                             <p>
-                                Web Designer, UI/UX Engineer
+                                Back & Front-End Developer, Quant Sentiment Analysis
                             </p>
-                            <h6>Hobbies</h6>
+                            <h6>Contributors</h6>
                             <p>
-                                Indie music, skiing and hiking. I love the great outdoors.
+                                최보경, 배영준, 채승훈, 이상민
                             </p>
                         </div>
                         <div class="col-md-6">
                             <h6>Recent badges</h6>
                             <a href="javascript:void();" class="badge badge-dark badge-pill">html5</a>
-                            <a href="javascript:void();" class="badge badge-dark badge-pill">react</a>
-                            <a href="javascript:void();" class="badge badge-dark badge-pill">codeply</a>
-                            <a href="javascript:void();" class="badge badge-dark badge-pill">angularjs</a>
-                            <a href="javascript:void();" class="badge badge-dark badge-pill">css3</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">java</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">spring framework</a>
                             <a href="javascript:void();" class="badge badge-dark badge-pill">jquery</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">javascript</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">python</a>
                             <a href="javascript:void();" class="badge badge-dark badge-pill">bootstrap</a>
-                            <a href="javascript:void();" class="badge badge-dark badge-pill">responsive-design</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">beautifulSoup</a>
                             <hr>
                             <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
                             <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
                             <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
                         </div>
                         <div class="col-md-12">
-                            <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+                            <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> 팀원 소개</h5>
                              <div class="table-responsive">
                             <table class="table table-hover table-striped">
                                 <tbody>                                    
                                     <tr>
                                         <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                            <strong>최보경</strong> : 최연장자 및 채승훈 브레이크를 담당하고 있습니다.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                            <strong>배영준</strong> : 아침에 어묵국물을 마시는 루틴을 지키고 있는 안양 발령 예정자.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                            <strong>채승훈</strong> : 산업은행 출신다운 아이디어 뱅크 및 bgm을 담당하고 있습니다.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                            <strong>이상민</strong> : 투룸부터 시작하는 서울 생활 새내기입니다.
                                         </td>
                                     </tr>
                                 </tbody>
