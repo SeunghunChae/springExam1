@@ -127,27 +127,27 @@ with open('C:/Users/KOSCOM/Downloads/firstProject/firstProject/springExam1/파�
     json_data = json.load(f)
 print(json_data)
 
-
+'''
 for i in range(len(meta_tema)):
-    list=select_a('stockintema',str(i))
-    print(list)
+    tlist=select_a('stockintema',str(i))
+    print(tlist)
 
-
+'''
 
 #크롤링으로 종목코드 찾기 
-'''
+
 for i in range(len(meta_tema)):
     print(i)
     #1초 기다려야 js를 읽어올 수 있음
     time.sleep(0.5)
 
     #i번재 테마의 증권 리스트
-    list=select_a('stockintema',str(i))
+    tlist=select_a('stockintema',str(i))
     print(str(i)+'번째 리스트 :')
-    for k in list :
+    for k in tlist :
         print(k)
     
-    for j in list:
+    for j in tlist:
         driver.find_element(By.ID, 'stock_items').clear()
         driver.find_element(By.ID, 'stock_items').send_keys(j[3])
 
@@ -161,4 +161,4 @@ for i in range(len(meta_tema)):
         #print(span[0].text)
         j.append(span[0].text)
         print(j,'\n')
-'''
+
