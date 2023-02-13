@@ -1,3 +1,7 @@
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 var clicked='';
 var MouseTemp = '';
 
@@ -55,30 +59,75 @@ window.onload = function(){
         success: function(result) {
             console.log(result);
             $.each(result.themeList, function(idx, val) {
-                console.log(idx + " " + val.themeName);
                 // 양수 음수 시각화
-                var upDown;
-                if(val.themeUpAndDown > 0){
-                    upDown = '+' + val.themeUpAndDown + '%';
-                } else {
-                    upDown = val.themeUpAndDown + '%';
-                }
-
-                console.log(upDown);
+//                var upDown;
+//                if(val.themeUpAndDown > 0){
+//                    upDown = '+' + val.themeUpAndDown + '%';
+//                } else {
+//                    upDown = val.themeUpAndDown + '%';
+//                }
 
                 // 테마정보 세팅
-                if(val.themePk == 1){
-                    document.getElementById("car").innerText = val.themeName;
-                    document.getElementById("carUpDown").innerText = upDown;
-                } else if(val.themePk == 2){
-                    document.getElementById("semi").innerText = val.themeName;
-                    document.getElementById("semiUpDown").innerText = upDown;
-                } else if(val.themePk == 3){
-                    document.getElementById("battery").innerText = val.themeName;
-                    document.getElementById("batteryUpDown").innerText = upDown;
-                } else if(val.themePk == 4){
-                    document.getElementById("erection").innerText = val.themeName;
-                    document.getElementById("erectionUpDown").innerText = upDown;
+                if(val.no == 1){
+                    document.getElementById("1").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown1").innerHTML = val.netChange + '<span>style="color:red;"</span>';
+                } else if(val.no == 2){
+                    document.getElementById("2").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown2").innerText = val.netChange;
+                } else if(val.no == 3){
+                    document.getElementById("3").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown3").innerText = val.netChange;
+                } else if(val.no == 4){
+                    document.getElementById("4").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown4").innerText = val.netChange;
+                } else if(val.no == 5){
+                    document.getElementById("5").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown5").innerText = val.netChange;
+                } else if(val.no == 6){
+                    document.getElementById("6").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown6").innerText = val.netChange;
+                } else if(val.no == 7){
+                    document.getElementById("7").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown7").innerText = val.netChange;
+                } else if(val.no == 8){
+                    document.getElementById("8").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown8").innerText = val.netChange;
+                } else if(val.no == 9){
+                    document.getElementById("9").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown9").innerText = val.netChange;
+                } else if(val.no == 10){
+                    document.getElementById("10").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown10").innerText = val.netChange;
+                } else if(val.no == 11){
+                    document.getElementById("11").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown11").innerText = val.netChange;
+                } else if(val.no == 12){
+                    document.getElementById("12").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown12").innerText = val.netChange;
+                } else if(val.no == 13){
+                    document.getElementById("13").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown13").innerText = val.netChange;
+                } else if(val.no == 14){
+                    document.getElementById("14").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown14").innerText = val.netChange;
+                } else if(val.no == 15){
+                    document.getElementById("15").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown15").innerText = val.netChange;
+                } else if(val.no == 16){
+                    document.getElementById("16").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown16").innerText = val.netChange;
+                } else if(val.no == 17){
+                    document.getElementById("17").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown17").innerText = val.netChange;
+                } else if(val.no == 18){
+                    document.getElementById("18").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown18").innerText = val.netChange;
+                } else if(val.no == 19){
+                    document.getElementById("19").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown19").innerText = val.netChange;
+                } else if(val.no == 20){
+                    document.getElementById("20").innerHTML = val.temaName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
+                    document.getElementById("upDown20").innerText = val.netChange;
                 }
             });
         }
