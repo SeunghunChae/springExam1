@@ -14,7 +14,7 @@ var value2=[7, 5, 14, 7, 12, 6, 10, 6, 11, 5];
 //실시간 글씨 변경 사용법
 var count=0;
 var arr=['채승훈','최보경','배영준','이상민'];
-
+var date = new Array(500);
 // TODO TEST 위한 주석
 //setInterval(function(){
 //    var temp=document.getElementById("temp");
@@ -58,6 +58,7 @@ window.onload = function(){
             "Content-Type": "application/json"
         },
         dataType:'json',
+        async:false,
         success: function(result) {
             console.log(result);
 
@@ -279,6 +280,7 @@ function getTopStock(themePk){
             "Content-Type": "application/json"
         },
         dataType:'json',
+        async:false,
         success: function(result) {
             console.log(result);
             $.each(result.stockList, function(idx, val) {
@@ -312,6 +314,7 @@ function getTopStock(themePk){
             "Content-Type": "application/json"
         },
         dataType:'json',
+        async:false,
         success: function(result) {
             console.log("top4List");
             console.log(result);
@@ -345,8 +348,6 @@ function getTopStock(themePk){
 
             });
 
-            console.log(list1);
-            console.log(list2);
             // chart 2
             var ctx = document.getElementById("chart2").getContext('2d');
             var myChart = new Chart(ctx, {
@@ -449,19 +450,38 @@ function getTopStock(themePk){
 
 function getChart(stockPk){
     // 2023.02.05 배영준 [주식정보 세팅]
-//    console.log(document.getElementById("jm" + stockPk).innerText);
-//    $.ajax({
-//        type: 'post',
-//        url: '/api/dummy/' + document.getElementById("jm" + stockPk).innerText,
-//        headers: {
-//            "Content-Type": "application/json"
-//        },
-//        dataType:'json',
-//        success: function(result) {
-//            console.log(result);
-//            $.each(result.dummyList, function(idx, val) {
-//        }
-//
+    console.log(document.getElementById("jm" + stockPk).innerText);
+    $.ajax({
+        type: 'get',
+        url: '/api/dummy/',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        dataType:'json',
+        async:false,
+        success: function(result) {
+            console.log(result);
+            for (var i = 0; i < arr.length; i++) {
+                data[i] = new Array(2);
+            }
+            $.each(result.dummyList, function(idx, val) {
+                 // 테마정보 세팅
+                 document.getElementById("top4Jm" + num).innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
+                 document.getElementById("top4JmDr" + num).innerHTML = val.price;
+                 document.getElementById("top4JmUpdown" + num).innerHTML = val.updownRate;
+                 document.getElementById("top4JmUpdown" + num).style.color = upDown;
+                 document.getElementById("top4JmUpdown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
+                 document.getElementById("top4JmUpdown" + num).style.fontSize = "18px";
+
+                 console.log(document.getElementById('top4Jm' + num).innerText);
+                 console.log(document.getElementById('top4JmDr' + num).innerText);
+                 console.log(document.getElementById('top4JmUpdown' + num).innerText.substring(0,5));
+
+                 list1[idx] = document.getElementById("top4Jm" + num).innerText;
+                 list2[idx] = document.getElementById("top4JmUpdown" + num).innerText.substring(0,5);
+            }
+        }
+
 //        "use strict";
 //         //chart 1
 //         var ctx = document.getElementById('chart1').getContext('2d');
@@ -523,12 +543,5 @@ function getChart(stockPk){
 //
 //             }
 //            });
-//                // 테마정보 세팅
-//                document.getElementById("jm" + num + "").innerHTML = val.stockName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
-//                document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
-//                document.getElementById("jmUpDown" + num).style.color = upDown;
-//                document.getElementById("jmUpDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
-//                document.getElementById("jmUpDown" + num).style.fontSize = "18px";
-//            });
-//    });
+    });
 }
