@@ -117,7 +117,7 @@ public class AnalysisController {
         return res;
     }
 
-    /** 개별 종목 dummy 데이터 전체 조회 **/
+    /** 개별 종목 dummy 데이터 - 이름으로 조회 **/
     @PostMapping(value = "/dummy", produces="application/json; charset=utf-8")
     @ResponseBody
     public HashMap<String,Object> getDummy(@RequestBody DummyData dummyData, HttpServletRequest request, HttpSession session) throws Exception{
@@ -128,6 +128,16 @@ public class AnalysisController {
         return res;
     }
 
+    /** 개별 종목 dummy 데이터 - 전체 조회 **/
+    @GetMapping(value = "/dummy", produces="application/json; charset=utf-8")
+    @ResponseBody
+    public HashMap<String,Object> getDummyAll(HttpServletRequest request, HttpSession session) throws Exception{
+
+        List<HashMap<String,Object>> dummyList = analysisService.getDummyAll();
+        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
+        res.put("dummyList", dummyList);
+        return res;
+    }
 
 }
 

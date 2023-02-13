@@ -29,4 +29,6 @@ public interface AnalysisMapper {
     List<HashMap<String, Object>> getCrawling() throws Exception;
 
     List<HashMap<String, Object>> getDummy(String name) throws Exception;
+
+    List<HashMap<String, Object>> getDummyAll() throws Exception;
 }

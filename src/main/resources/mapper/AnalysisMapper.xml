@@ -35,4 +35,7 @@
         SELECT * FROM DUMMYDATA WHERE NAME = #{name}
     </select>
 
+    <select id="getDummyAll" resultType="HashMap">
+        SELECT * FROM DUMMYDATA
+    </select>
 </mapper>

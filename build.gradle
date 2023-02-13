@@ -63,9 +63,9 @@ dependencies {
 }
 
 bootWar {
-	archiveBaseName = 'firstProjectSvr'
+	archiveBaseName = 'stockerSvr'
 	archiveVersion = '0.0.1'
-	archiveFileName = 'firstProjectSvr.war'
+	archiveFileName = 'stockerSvr.war'
 }
 
 tasks.named('test') {
