@@ -450,37 +450,37 @@ function getTopStock(themePk){
 
 function getChart(stockPk){
     // 2023.02.05 배영준 [주식정보 세팅]
-    console.log(document.getElementById("jm" + stockPk).innerText);
-    $.ajax({
-        type: 'get',
-        url: '/api/dummy/',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        dataType:'json',
-        async:false,
-        success: function(result) {
-            console.log(result);
-            for (var i = 0; i < arr.length; i++) {
-                data[i] = new Array(2);
-            }
-            $.each(result.dummyList, function(idx, val) {
-                 // 테마정보 세팅
-                 document.getElementById("top4Jm" + num).innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
-                 document.getElementById("top4JmDr" + num).innerHTML = val.price;
-                 document.getElementById("top4JmUpdown" + num).innerHTML = val.updownRate;
-                 document.getElementById("top4JmUpdown" + num).style.color = upDown;
-                 document.getElementById("top4JmUpdown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
-                 document.getElementById("top4JmUpdown" + num).style.fontSize = "18px";
-
-                 console.log(document.getElementById('top4Jm' + num).innerText);
-                 console.log(document.getElementById('top4JmDr' + num).innerText);
-                 console.log(document.getElementById('top4JmUpdown' + num).innerText.substring(0,5));
-
-                 list1[idx] = document.getElementById("top4Jm" + num).innerText;
-                 list2[idx] = document.getElementById("top4JmUpdown" + num).innerText.substring(0,5);
-            }
-        }
+//    console.log(document.getElementById("jm" + stockPk).innerText);
+//    $.ajax({
+//        type: 'get',
+//        url: '/api/dummy/',
+//        headers: {
+//            "Content-Type": "application/json"
+//        },
+//        dataType:'json',
+//        async:false,
+//        success: function(result) {
+//            console.log(result);
+//            for (var i = 0; i < arr.length; i++) {
+//                data[i] = new Array(2);
+//            }
+//            $.each(result.dummyList, function(idx, val) {
+//                 // 테마정보 세팅
+//                 document.getElementById("top4Jm" + num).innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
+//                 document.getElementById("top4JmDr" + num).innerHTML = val.price;
+//                 document.getElementById("top4JmUpdown" + num).innerHTML = val.updownRate;
+//                 document.getElementById("top4JmUpdown" + num).style.color = upDown;
+//                 document.getElementById("top4JmUpdown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
+//                 document.getElementById("top4JmUpdown" + num).style.fontSize = "18px";
+//
+//                 console.log(document.getElementById('top4Jm' + num).innerText);
+//                 console.log(document.getElementById('top4JmDr' + num).innerText);
+//                 console.log(document.getElementById('top4JmUpdown' + num).innerText.substring(0,5));
+//
+//                 list1[idx] = document.getElementById("top4Jm" + num).innerText;
+//                 list2[idx] = document.getElementById("top4JmUpdown" + num).innerText.substring(0,5);
+//            }
+//        }
 
 //        "use strict";
 //         //chart 1
@@ -543,5 +543,5 @@ function getChart(stockPk){
 //
 //             }
 //            });
-    });
+//    });
 }

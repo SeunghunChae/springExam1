@@ -1,4 +1,5 @@
 
+var data_all;
 
 
 window.onload = function(){
@@ -17,6 +18,7 @@ window.onload = function(){
       $.ajax(settings).done(function (data) {
         console.log(data);
 
+        data_all = data;
         
 
         for(var i = 0; i < 6; i++){
@@ -27,11 +29,15 @@ window.onload = function(){
             var nameTemp = 'table_'+(i+1)+'_name';
             //console.log(nameTemp);
             //$(nameTemp).text = "ddddd";
-            
-    
-            for(var j =0; j<3; j++){ 
 
-                document.getElementById(nameTemp).innerHTML = temp.themeList[i].temaName;
+            
+            console.log(temp.themeList[i].top4List.length);
+    
+            for(var j =0; j<temp.themeList[i].top4List.length; j++){ 
+
+                
+
+                document.getElementById(nameTemp).innerHTML = temp.themeList[i].top4List[j].temaName;
 
                 var table_data="";
                 table_data+="<tr>";    
@@ -60,7 +66,6 @@ window.onload = function(){
                 var cells = rows[j].getElementsByTagName("td"); 
                 var UpsDowns = cells[2].firstChild.data.substr(0,4);
                 
-                console.log(UpsDowns);
 
                 if(UpsDowns > 0){
                     cells[2].style.color="lightCoral";
@@ -93,3 +98,7 @@ window.onload = function(){
 
 }
 
+function ModalInfo(id){
+
+
+}

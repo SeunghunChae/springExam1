@@ -46,7 +46,7 @@
     <!-- 첫 페이지 모달창-->
     <div id="modal" class="modal">
         <div id="modal_body" class="modal_body">
-            <h2 style="color: rgb(80, 80, 80);">STOCKER</h2>
+            <h1 style="color: rgb(51, 51, 51);">STOCKER</h1>
 
         </div>
     </div>
@@ -73,7 +73,7 @@
 
             <li>
                 <a href="tables.html">
-                    <i class="zmdi zmdi-grid"></i> <span>투자현황</span>
+                    <i class="zmdi zmdi-grid"></i> <span>주가 동향</span>
                 </a>
             </li>
 
@@ -411,7 +411,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body" onclick = "getChart('2')">
+                            <div class="card-body">
                                 <h5 id = "jm2" class="text-white mb-0">종목2 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;">
                                     <div class="progress-bar" style="width:55%"></div>
@@ -420,7 +420,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body" onclick = "getChart('3')">
+                            <div class="card-body">
                                 <h5 id = "jm3" class="text-white mb-0">종목3 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;">
                                     <div class="progress-bar" style="width:55%"></div>
@@ -429,7 +429,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body" onclick = "getChart('4')">
+                            <div class="card-body">
                                 <h5 id = "jm4" class="text-white mb-0">종목4 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
                                 <div class="progress my-3" style="height:3px;">
                                     <div class="progress-bar" style="width:55%"></div>
@@ -470,28 +470,29 @@
                                     <input type="radio" name="chk_info" value="3"> 종목토론방
                                     <input type="radio" name="chk_info" value="4"> 통합
                             </div> -->
+                            
                             <div class="middle">
                                 <label>
                                     <input type="radio" name="chk_info" checked = "checked" value="1"/>
-                                        <div class="front-end box">
+                                        <div class="Sns_b box">
                                         <span>SNS</span>
                                         </div>
                                 </label>
                                 <label>
                                     <input type="radio" name="chk_info" value="2"/>
-                                        <div class="back-end box">
+                                        <div class="News_b box">
                                         <span>뉴스 기사</span>
                                         </div>
                                 </label>
                                 <label>
                                     <input type="radio" name="chk_info" value="3"/>
-                                        <div class="back-end box">
-                                        <span>종목 토론방</span>
+                                        <div class="Twits_b box">
+                                        <span>종목토론</span>
                                         </div>
                                 </label>
                                 <label>
                                     <input type="radio" name="chk_info" value="4"/>
-                                        <div class="back-end box">
+                                        <div class="All_b box">
                                         <span>통합</span>
                                         </div>
                                 </label>
