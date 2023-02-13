@@ -210,72 +210,8 @@ window.onload = function(){
          }
         });
     });
-
-    "use strict";
-
-     //chart 1
-      var ctx = document.getElementById('chart1').getContext('2d');
-
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-                datasets: [{
-                    label: 'New Visitor',
-                    data: [9, 9, 9, 5, 7, 4, 6, 4, 6, 3],
-                    backgroundColor: '#fff',
-                    borderColor: "transparent",
-                    pointRadius :"0",
-                    borderWidth: 3
-                }, {
-                    label: 'Old Visitor',
-                    data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
-                    backgroundColor: "rgba(255, 255, 255, 0.25)",
-                    borderColor: "transparent",
-                    pointRadius :"0",
-                    borderWidth: 1
-                }]
-            },
-        options: {
-            maintainAspectRatio: false,
-            legend: {
-              display: false,
-              labels: {
-                fontColor: '#ddd',
-                boxWidth:40
-              }
-            },
-            tooltips: {
-              displayColors:false
-            },
-          scales: {
-              xAxes: [{
-                ticks: {
-                    beginAtZero:true,
-                    fontColor: '#ddd'
-                },
-                gridLines: {
-                  display: true ,
-                  color: "rgba(221, 221, 221, 0.08)"
-                },
-              }],
-               yAxes: [{
-                ticks: {
-                    beginAtZero:true,
-                    fontColor: '#ddd'
-                },
-                gridLines: {
-                  display: true ,
-                  color: "rgba(221, 221, 221, 0.08)"
-                },
-              }]
-             }
-
-         }
-        });
 }
 
-var themePkey = 0;
 
 /*
 //동적으로 글씨 바꾸기
@@ -446,33 +382,147 @@ function getTopStock(themePk){
             });
         }
     });
+
+   //chart 1
+//    var ctx = document.getElementById('chart1').getContext('2d');
+//
+//    var myChart = new Chart(ctx, {
+//       type: 'line',
+//       data: {
+//               labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+//               datasets: [{
+//                   label: 'New Visitor',
+//                   data: ['2000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '2000'],
+//                   backgroundColor: '#fff',
+//                   borderColor: "transparent",
+//                   pointRadius :"0",
+//                   borderWidth: 3
+//               }, {
+//                   label: 'Old Visitor',
+//                   data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
+//                   backgroundColor: "rgba(255, 255, 255, 0.25)",
+//                   borderColor: "transparent",
+//                   pointRadius :"0",
+//                   borderWidth: 1
+//               }]
+//           },
+//       options: {
+//           maintainAspectRatio: false,
+//           legend: {
+//             display: false,
+//             labels: {
+//               fontColor: '#ddd',
+//               boxWidth:40
+//             }
+//           },
+//           tooltips: {
+//             displayColors:false
+//           },
+//         scales: {
+//             xAxes: [{
+//               ticks: {
+//                   beginAtZero:true,
+//                   fontColor: '#ddd'
+//               },
+//               gridLines: {
+//                 display: true ,
+//                 color: "rgba(221, 221, 221, 0.08)"
+//               },
+//             }],
+//              yAxes: [{
+//               ticks: {
+//                   beginAtZero:true,
+//                   fontColor: '#ddd'
+//               },
+//               gridLines: {
+//                 display: true ,
+//                 color: "rgba(221, 221, 221, 0.08)"
+//               },
+//             }]
+//            }
+//
+//        }
+//       });
 }
 
 
 
 function getChart(stockPk){
     // 2023.02.05 배영준 [주식정보 세팅]
-    console.log(stockPk);
+    console.log(document.getElementById("jm" + stockPk).innerText);
     $.ajax({
-        type: 'get',
-        url: '/api/stock/' + themePk,
+        type: 'post',
+        url: '/api/dummy/' + document.getElementById("jm" + stockPk).innerText,
         headers: {
             "Content-Type": "application/json"
         },
         dataType:'json',
         success: function(result) {
             console.log(result);
-            $.each(result.stockList, function(idx, val) {
-                console.log(idx + " " + val.updownRate);
-                // 양수 음수 시각화
-                var upDown;
-                var num = idx + 1;
-                if(val.updownRate.substring(0,1) == '+'){
-                    upDown = "lightCoral";
-                } else {
-                    upDown = "SteelBlue";
-                }
+            $.each(result.dummyList, function(idx, val) {
+        }
 
+        "use strict";
+         //chart 1
+         var ctx = document.getElementById('chart1').getContext('2d');
+
+         var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+                    datasets: [{
+                        label: 'New Visitor',
+                        data: [9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000],
+                        backgroundColor: '#fff',
+                        borderColor: "transparent",
+                        pointRadius :"0",
+                        borderWidth: 3
+                    }, {
+                        label: 'Old Visitor',
+                        data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
+                        backgroundColor: "rgba(255, 255, 255, 0.25)",
+                        borderColor: "transparent",
+                        pointRadius :"0",
+                        borderWidth: 1
+                    }]
+                },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                  display: false,
+                  labels: {
+                    fontColor: '#ddd',
+                    boxWidth:40
+                  }
+                },
+                tooltips: {
+                  displayColors:false
+                },
+              scales: {
+                  xAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        fontColor: '#ddd'
+                    },
+                    gridLines: {
+                      display: true ,
+                      color: "rgba(221, 221, 221, 0.08)"
+                    },
+                  }],
+                   yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        fontColor: '#ddd'
+                    },
+                    gridLines: {
+                      display: true ,
+                      color: "rgba(221, 221, 221, 0.08)"
+                    },
+                  }]
+                 }
+
+             }
+            });
                 // 테마정보 세팅
                 document.getElementById("jm" + num + "").innerHTML = val.stockName + '<span class="float-right"><i class="fa fa-shopping-cart"></i></span>';
                 document.getElementById("jmUpDown" + num).innerHTML = val.updownRate;
@@ -480,87 +530,5 @@ function getChart(stockPk){
                 document.getElementById("jmUpDown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
                 document.getElementById("jmUpDown" + num).style.fontSize = "18px";
             });
-
-
-        }
-    });
-
-    // 테마별 수익률 TOP4 종목
-    $.ajax({
-        type: 'get',
-        url: '/api/theme/top4/' + themePk,
-        headers: {
-            "Content-Type": "application/json"
-        },
-        dataType:'json',
-        success: function(result) {
-            console.log("top4List");
-            console.log(result);
-            var list1 = [];
-            var list2 = [];
-            $.each(result.top4List, function(idx, val) {
-                console.log(idx + " " + val.updownRate);
-                // 양수 음수 시각화
-                var upDown;
-                var num = idx + 1;
-                if(val.updownRate.substring(0,1) == '+'){
-                    upDown = "lightCoral";
-                } else {
-                    upDown = "SteelBlue";
-                }
-                // 테마정보 세팅
-                document.getElementById("top4Jm" + num).innerHTML = '<i class="fa fa-circle text-white mr-2"></i>' + val.stockName;
-                document.getElementById("top4JmDr" + num).innerHTML = val.price;
-                document.getElementById("top4JmUpdown" + num).innerHTML = val.updownRate;
-                document.getElementById("top4JmUpdown" + num).style.color = upDown;
-                document.getElementById("top4JmUpdown" + num).style.textShadow = "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,1px 1px 0 black";
-                document.getElementById("top4JmUpdown" + num).style.fontSize = "18px";
-
-                console.log(document.getElementById('top4Jm' + num).innerText);
-                console.log(document.getElementById('top4JmDr' + num).innerText);
-                console.log(document.getElementById('top4JmUpdown' + num).innerText.substring(0,5));
-
-                list1[idx] = document.getElementById("top4Jm" + num).innerText;
-                list2[idx] = document.getElementById("top4JmUpdown" + num).innerText.substring(0,5);
-
-
-            });
-
-            console.log(list1);
-            console.log(list2);
-            // chart 2
-            var ctx = document.getElementById("chart2").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels : list1,
-                    datasets: [{
-                        backgroundColor: [
-                            "#ffffff",
-                            "rgba(255, 255, 255, 0.70)",
-                            "rgba(255, 255, 255, 0.50)",
-                            "rgba(255, 255, 255, 0.20)"
-                        ],
-                        data : list2,
-                        borderWidth: [0, 0, 0, 0]
-                    }]
-                },
-            options: {
-                maintainAspectRatio: false,
-               legend: {
-                 position :"bottom",
-                 display: false,
-                    labels: {
-                      fontColor: '#ddd',
-                      boxWidth:15
-                   }
-                }
-                ,
-                tooltips: {
-                  displayColors:false
-                }
-               }
-            });
-        }
     });
 }
