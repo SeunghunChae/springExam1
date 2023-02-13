@@ -198,18 +198,20 @@ window.onload = function() {
                                     var list_price = data_arr[i]['price'].split('|')
                                     var list_date = data_arr[i]['time'].split('|')
                                     for (var j = 0; j < list_date.length; j++) {
+                                        var price=list_price[j].replace(',','');
+                                        var date=list_date[j].replace(',','');
                                         //까만거
-                                        value1_1.push(list_price[j]);
-                                        value1_2.push(list_price[j]);
-                                        value1_3.push(list_price[j]);
-                                        value1_4.push(list_price[j]);
+                                        value1_1.push(price);
+                                        value1_2.push(price);
+                                        value1_3.push(price);
+                                        value1_4.push(price);
                                         //하얀거
-                                        value2_1.push(list_price[j]);
-                                        value2_2.push(list_price[j]);
-                                        value2_3.push(list_price[j]);
-                                        value2_4.push(list_price[j]);
+                                        value2_1.push(price);
+                                        value2_2.push(price);
+                                        value2_3.push(price);
+                                        value2_4.push(price);
 
-                                        Ldate.push(list_date[j]);
+                                        Ldate.push(date);
                                         //리스트 완성
                                     } //for
                                 } //if
