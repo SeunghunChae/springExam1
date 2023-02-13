@@ -3,6 +3,7 @@ package com.example.firstProject.controller;
 import com.example.firstProject.service.AnalysisService;
 import com.example.firstProject.util.ObjectUtils;
 import com.example.firstProject.util.ReturnCode;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,14 +25,15 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(value = "/api")
+@RequiredArgsConstructor
 public class AnalysisController {
 
-    private AnalysisService analysisService;
+    private final AnalysisService analysisService;
 
-    @Autowired
+    /*@Autowired
     public void setAnalysisService(AnalysisService analysisService) {
         this.analysisService = analysisService;
-    }
+    }*/
 
     /**
     * 테마 목록 조회
@@ -109,6 +111,17 @@ public class AnalysisController {
         List<HashMap<String,Object>> crawlingList = analysisService.getCrawling();
         HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
         res.put("crawlingList", crawlingList);
+        return res;
+    }
+
+    /** 개별 종목 dummy 데이터 전체 조회 **/
+    @GetMapping(value = "/dummy", produces="application/json; charset=utf-8")
+    @ResponseBody
+    public HashMap<String,Object> getDummy( HttpServletRequest request, HttpSession session) throws Exception{
+
+        List<HashMap<String,Object>> dummyList = analysisService.getDummy();
+        HashMap<String,Object> res = ReturnCode.S_0.getHashMap();
+        res.put("dummyList", dummyList);
         return res;
     }
 
